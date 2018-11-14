@@ -6,19 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: 路由 跳转 | Hexo</title>
+  <title>frameset框架 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="李英奇的博客">
-<meta name="keywords" content="前端 博客 大牛">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/tags/路由-跳转/index.html">
+  <meta name="description" content="HTML iframe 和 frameset 的区别  iframe 和 frameset 都用于html页面的框架布局。 (1). iframe标签：iframe 是个内联框架，是在页面里生成个内部框架。 (2). frameset 标签：frameset 定义一个框架集，包含多个子框架，每个框架都有独立的文档。 iframe 标签  iframe 是个内联框架，是在页面里生成个内部框架。">
+<meta name="keywords" content="frameset iframe frame">
+<meta property="og:type" content="article">
+<meta property="og:title" content="frameset框架">
+<meta property="og:url" content="http://yoursite.com/2018/09/11/frameset框架/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="李英奇的博客">
+<meta property="og:description" content="HTML iframe 和 frameset 的区别  iframe 和 frameset 都用于html页面的框架布局。 (1). iframe标签：iframe 是个内联框架，是在页面里生成个内部框架。 (2). frameset 标签：frameset 定义一个框架集，包含多个子框架，每个框架都有独立的文档。 iframe 标签  iframe 是个内联框架，是在页面里生成个内部框架。">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-11-14T17:11:59.091Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
-<meta name="twitter:description" content="李英奇的博客">
+<meta name="twitter:title" content="frameset框架">
+<meta name="twitter:description" content="HTML iframe 和 frameset 的区别  iframe 和 frameset 都用于html页面的框架布局。 (1). iframe标签：iframe 是个内联框架，是在页面里生成个内部框架。 (2). frameset 标签：frameset 定义一个框架集，包含多个子框架，每个框架都有独立的文档。 iframe 标签  iframe 是个内联框架，是在页面里生成个内部框架。">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -154,60 +155,198 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-frameset框架" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/10/14/前端路由实现方式及页面跳转/" class="archive-article-date">
-  	<time datetime="2018-10-14T13:17:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-14</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/10/14/前端路由实现方式及页面跳转/">前端路由实现方式及页面跳转</a>
+    <h1 class="article-title" itemprop="name">
+      frameset框架
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2018/09/11/frameset框架/" class="archive-article-date">
+  	<time datetime="2018-09-10T16:45:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-11</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="HTML-iframe-和-frameset-的区别"><a href="#HTML-iframe-和-frameset-的区别" class="headerlink" title="HTML iframe 和 frameset 的区别"></a>HTML iframe 和 frameset 的区别</h2><p>  iframe 和 frameset 都用于html页面的框架布局。</p>
+<p>(1). iframe标签：iframe 是个内联框架，是在页面里生成个内部框架。</p>
+<p>(2). frameset 标签：frameset 定义一个框架集，包含多个子框架，每个框架都有独立的文档。</p>
+<h3 id="iframe-标签"><a href="#iframe-标签" class="headerlink" title="iframe 标签"></a>iframe 标签</h3><p>  iframe 是个内联框架，是在页面里生成个内部框架。</p>
+<p>  frameborder {int}：是否显示框架的边框；</p>
+<p>  src {URL}：指定一个资源(如网页、图片)的uri；</p>
+<p>  scrolling {boolean}：是否显示框架的滚动条；</p>
+<p>  width {int}：定义iframe的宽度；</p>
+<p>  height {int}：定义iframe的高度；</p>
+<p>应用场景： 重复嵌套页面，一个页面需要重复利用</p>
+<h3 id="frameset-标签"><a href="#frameset-标签" class="headerlink" title="frameset 标签"></a>frameset 标签</h3><p>  frameset 定义一个框架集，包含多个框架，每个框架都有独立的文档。</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">// 没有body 注意， 有的话不渲染框架</span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;title&gt;&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">  &lt;frameset &gt;</span><br><span class="line">  　　&lt;frame src=a.htm /&gt;</span><br><span class="line">  　　&lt;frame src=b.htm /&gt;</span><br><span class="line">  　　&lt;noframes&gt;&lt;/noframes&gt;</span><br><span class="line">  &lt;/frameset&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<p>  <frame src="a.htm"> ：子框架<br>  <noframes></noframes>：浏览器不支持此框架的时，显示的内容。</p>
+<p>frameset属性：<br>　rows ：表示子框架按行的样式布局。以2个子框架为例：rows=”30%,<em>“ ，表示第一个框架占整个页面30%的高度，第二个占剩下的；<br>　cols ：表示子框架按列的样式布局。以2个子框架为例：cols=”30%,</em>“ ，表示第一个框架占整个页面30%的长度，第二个占剩下的；<br>　noresize: “noresize”表示不调整子框架的范围。</p>
+<p>frame 属性：<br>  　src ：指向一个资源(如页面、图片等)的URI；<br>　　name ：指定框架的名称，以便进行框架间的操作。</p>
+<p>参照示例代码，frm1更改frm2的子集指向的页面：window.parent.frames[“frm2”].location.href = ‘b.htm’</p>
+<p>应用场景：<br>1 后台页面的管理，左边显示 菜单，右边框架 显示详细页面。批量游览简历 <a href="https://lpt.liepin.com" target="_blank" rel="noopener">https://lpt.liepin.com</a></p>
+<p>本文参考 <a href="https://www.cnblogs.com/polk6/archive/2013/05/24/3097430.html" target="_blank" rel="noopener">https://www.cnblogs.com/polk6/archive/2013/05/24/3097430.html</a> </p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>感谢打赏<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/wixin.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">路由 跳转</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">frameset iframe frame</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/09/11/frameset框架/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2018/09/23/DOCTYPE-兼容模式和标准模式/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          DOCTYPE 兼容模式和标准模式
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2018/09/08/hexo命令行/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Hello World</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -230,9 +369,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,

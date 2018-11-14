@@ -156,112 +156,6 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-前端路由实现方式及页面跳转" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/14/前端路由实现方式及页面跳转/">前端路由实现方式及页面跳转</a>
-    </h1>
-  
-
-        
-        <a href="/2018/11/14/前端路由实现方式及页面跳转/" class="archive-article-date">
-  	<time datetime="2018-11-14T13:17:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-14</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="a标签的target属性"><a href="#a标签的target属性" class="headerlink" title="a标签的target属性"></a>a标签的target属性</h2><ol>
-<li>默认_self属性在当前框架，或者游览器中打开窗口</li>
-<li>有_blank新的游览器窗口中打开，不可window.history.back() || go(n), forward(); 相当于window.location.reload();</li>
-<li>有_top，场景当出现框架套框架的时候，在底层框架调用_top会导致在整个游览器窗口中打开被链接文档；</li>
-<li>有_parent，场景如上，在父框架中打开被链接文档。</li>
-</ol>
-<ol start="5">
-<li><p>场景：当搜索职位，web前端简历时，在搜索结果页出现一系列的列表，想要点击每一个列表进入简历详情页，并且这些简历详情页只展示在一个新增窗口上;</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">  &lt;ul&gt;</span><br><span class="line">  &lt;li&gt;&lt;a href=&quot;index1.html&quot; target=&quot;view_window&quot;&gt;Chapter 0&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">  &lt;li&gt;&lt;a href=&quot;index2.html&quot; target=&quot;view_window&quot;&gt;Chapter 1&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">  &lt;li&gt;&lt;a href=&quot;index3.html&quot; target=&quot;view_window&quot;&gt;Chapter 2&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">  &lt;li&gt;&lt;a href=&quot;index4.html&quot; target=&quot;view_window&quot;&gt;Chapter 3&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br></pre></td></tr></table></figure>
-<p>当用户第一次选择内容列表中的某个链接时，浏览器将打开一个新的窗口，将它标记为 “view_window”，然后在其中显示希望显示的文档内容。如果用户从这个内容列表中选择另一个链接，且这个 “view_window” 仍处于打开状态，浏览器就会再次将选定的文档载入那个窗口，取代刚才的那些文档。</p>
-</li>
-<li><p>在框架中打开窗口</p>
-<p>不用打开一个完整的浏览器窗口，使用 target 更通常的方法是在一个 <frameset> 显示中将超链接内容定向到一个或者多个框架中。可以将这个内容列表放入一个带有两个框架的文档的其中一个框架中，并用这个相邻的框架来显示选定的文档：<br>w3c, 实例结果页就是用这种思想<br>// 对框架不了解的同学可以，去框架模块看一下(无body),<br>例子 <a href="https://github.com/lyqbetter/blog-demo.git" target="_blank" rel="noopener">https://github.com/lyqbetter/blog-demo.git</a>  里面的demo1;</frameset></p>
-</li>
-</ol>
-<h2 id="javascript-跳转页面"><a href="#javascript-跳转页面" class="headerlink" title="javascript 跳转页面"></a>javascript 跳转页面</h2><p>window.location.href = url; 在当前窗口跳转页面</p>
-<p>window.reload(); //重新刷新页面</p>
-<p>window.open(url); // 在新窗口打开网站</p>
-<h2 id="前端路由实现方式"><a href="#前端路由实现方式" class="headerlink" title="前端路由实现方式"></a>前端路由实现方式</h2><p>  提起路由先说一下window.history这个对象吧：<br>    浏览器(窗口 画重点)有一个history对象，用来保存浏览历史<br>    Window.history是一个只读属性，用来获取History 对象的引用，History 对象提供了操作浏览器会话历史（浏览器地址栏中访问的页面，以及当前页面中通过框架加载的页面）的接口。<br>    history: 返回值<br>      scrollRestoration： auto;<br>      history.scrollRestoration。它提供两个值，auto，作为它的默认值，可以像你所见的大多数情况一样工作，另一个manual，意味着作为一个开发者你拥有了自主掌控任何所需的scroll改变，当用户循环往复于app的history中。如果需要，你可以跟踪scroll的位置轨迹</p>
-<pre><code>  length: Internet Explorer和Opera从0开始，而Firefox、Chrome和Safari从1开始。 属性声明了浏览器历史列表中的元素数量;
-  state: 状态对象
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">window.history.back(); // 当前窗口游览器回话记录回退</span><br><span class="line">window.history.forward(); // 前进</span><br><span class="line">window.history.go(n); // n可正可负， 负回退，正前进</span><br><span class="line">//如果移动的位置超出了访问历史的边界，以上三个方法并不报错，而是默默的失败</span><br></pre></td></tr></table></figure>
-</code></pre><p> 路由就是指随着浏览器地址栏的变化，展示给用户的页面也不相同。<br>传统的网页根据用户访问的不同的地址，浏览器从服务器获取对应页面的内容展示给用户。这样造成服务器压力比较大，而且用户访问速度也比较慢。在这种场景下，出现了单页应用。<br>单页应用，就是只有一个页面，用户访问一个网址，服务器返回的页面始终只有一个，不管用户改变了浏览器地址栏的内容或者在页面内发生了跳转，服务器不会重新返回新的页面，而是通过相应的js操作来实现页面的更改。而地址栏内容的改变，显示不同的页面，实现的手段就是前端路由</p>
-<h3 id="第一种"><a href="#第一种" class="headerlink" title="第一种"></a>第一种</h3><p>  HTML5 History两个新增的API：history.pushState 和 history.replaceState，两个 API 都会操作浏览器的历史记录，而不会引起页面的刷新。</p>
-<p>  history.pushState方法由于添加会话历史，接受三个参数，依次为：<br>    state：一个与指定网址相关的状态对象，popstate事件触发时，该对象会传入回调函数。如果不需要这个对象，此处可以填null。<br>    title：新页面的标题，但是所有浏览器目前都忽略这个值，因此这里可以填null。<br>    url：新的网址，必须与当前页面处在同一个域。浏览器的地址栏将显示这个网址。(为空当前url)</p>
-<p>  history.replaceState()<br>    history.replaceState方法的参数与pushState方法一模一样，区别是它修改浏览历史中当前纪录。</p>
-<p>  popstate 事件 每当同一个文档的浏览历史（即history对象）出现变化时，就会触发popstate事件。<br>  需要注意的是，仅仅调用pushState方法或replaceState方法 ，并不会触发该事件，只有用户点击浏览器倒退按钮和前进按钮，或者使用JavaScript调用back、forward、go方法时才会触发。另外，该事件只针对同一个文档，如果浏览历史的切换，导致加载不同的文档，该事件也不会触发。</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">window.addEventListener(&apos;popstate&apos;, (e)=&gt; &#123;</span><br><span class="line">  console.log(e);</span><br><span class="line">&#125;, false);</span><br></pre></td></tr></table></figure>
-<h3 id="第二种"><a href="#第二种" class="headerlink" title="第二种"></a>第二种</h3><p>Hash就是url 中看到 # ,我们需要一个根据监听哈希变化触发的事件( hashchange) 事件。我们用 window.location.hash 处理哈希的改变时不会重新渲染页面，而是当作新页面加到历史记录中，这样我们跳转页面就可以在 hashchange 事件中注册 ajax 从而改变页面内容。 可以为hash的改变添加监听事件：</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">window.addEventListener(&apos;hashchange&apos;, (e)=&gt; &#123;</span><br><span class="line">  console.log(e);</span><br><span class="line">&#125;, false);</span><br></pre></td></tr></table></figure>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>  优点：<br>    从性能和用户体验的层面来比较的话，后端路由每次访问一个新页面的时候都要向服务器发送请求，然后服务器再响应请求，这个过程肯定会有延迟。而前端路由在访问一个新页面的时候仅仅是变换了一下路径而已，没有了网络延迟，对于用户体验来说会有相当大的提升。<br>    前端路由的优点有很多，比如页面持久性，像大部分音乐网站，你都可以在播放歌曲的同时，跳转到别的页面而音乐没有中断，再比如前后端彻底分离。 开发一个前端路由，主要考虑到页面的可插拔、页面的生命周期、内存管理等。</p>
-<p>  缺点：使用浏览器的前进，后退键的时候会重新发送请求，没有合理地利用缓存<br>       单页面无法记住之前滚动的位置，无法在前进，后退的时候记住滚动的位置;(scrollRestoration兼容性不好)；</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">路由 跳转</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/11/14/前端路由实现方式及页面跳转/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-Array-数组" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -519,6 +413,100 @@ lodash的思路，用迭代实现的，我就把它的源代码贴过来看一�
 
 
   
+    <article id="post-前端路由实现方式及页面跳转" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/14/前端路由实现方式及页面跳转/">前端路由实现方式及页面跳转</a>
+    </h1>
+  
+
+        
+        <a href="/2018/10/14/前端路由实现方式及页面跳转/" class="archive-article-date">
+  	<time datetime="2018-10-14T13:17:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-14</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="a标签的target属性"><a href="#a标签的target属性" class="headerlink" title="a标签的target属性"></a>a标签的target属性</h2><p>  (1).  默认_self属性在当前框架，或者游览器中打开窗口<br>  (2).  有_blank新的游览器窗口中打开，不可window.history.back() || go(n), forward(); 相当于window.location.reload();<br>  (3).  有_top，场景当出现框架套框架的时候，在底层框架调用_top会导致在整个游览器窗口中打开被链接文档；<br>  (4).  有_parent，场景如上，在父框架中打开被链接文档。<br>  (5). 场景：当搜索职位，web前端简历时，在搜索结果页出现一系列的列表，想要点击每一个列表进入简历详情页，并且这些简历详情页只展示在一个新增窗口上;</p>
+<pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">  &lt;ul&gt;</span><br><span class="line">  &lt;li&gt;&lt;a href=&quot;index1.html&quot; target=&quot;view_window&quot;&gt;Chapter 0&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">  &lt;li&gt;&lt;a href=&quot;index2.html&quot; target=&quot;view_window&quot;&gt;Chapter 1&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">  &lt;li&gt;&lt;a href=&quot;index3.html&quot; target=&quot;view_window&quot;&gt;Chapter 2&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">  &lt;li&gt;&lt;a href=&quot;index4.html&quot; target=&quot;view_window&quot;&gt;Chapter 3&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br></pre></td></tr></table></figure>
+
+当用户第一次选择内容列表中的某个链接时，浏览器将打开一个新的窗口，将它标记为 &quot;view_window&quot;，然后在其中显示希望显示的文档内容。如果用户从这个内容列表中选择另一个链接，且这个 &quot;view_window&quot; 仍处于打开状态，浏览器就会再次将选定的文档载入那个窗口，取代刚才的那些文档。
+</code></pre><p>  (6). 在框架中打开窗口</p>
+<p>  不用打开一个完整的浏览器窗口，使用 target 更通常的方法是在一个 <frameset> 显示中将超链接内容定向到一个或者多个框架中。可以将这个内容列表放入一个带有两个框架的文档的其中一个框架中，并用这个相邻的框架来显示选定的文档：<br>    w3c, 实例结果页就是用这种思想<br>  // 对框架不了解的同学可以，去框架模块看一下(无body),<br>  例子 <a href="https://github.com/lyqbetter/blog-demo.git" target="_blank" rel="noopener">https://github.com/lyqbetter/blog-demo.git</a>  里面的demo1;</frameset></p>
+<h2 id="javascript-跳转页面"><a href="#javascript-跳转页面" class="headerlink" title="javascript 跳转页面"></a>javascript 跳转页面</h2><p>window.location.href = url; 在当前窗口跳转页面</p>
+<p>window.reload(); //重新刷新页面</p>
+<p>window.open(url); // 在新窗口打开网站</p>
+<h2 id="前端路由实现方式"><a href="#前端路由实现方式" class="headerlink" title="前端路由实现方式"></a>前端路由实现方式</h2><p>  提起路由先说一下window.history这个对象吧：<br>    浏览器(窗口 画重点)有一个history对象，用来保存浏览历史<br>    Window.history是一个只读属性，用来获取History 对象的引用，History 对象提供了操作浏览器会话历史（浏览器地址栏中访问的页面，以及当前页面中通过框架加载的页面）的接口。<br>    history: 返回值<br>      scrollRestoration： auto;<br>      history.scrollRestoration。它提供两个值，auto，作为它的默认值，可以像你所见的大多数情况一样工作，另一个manual，意味着作为一个开发者你拥有了自主掌控任何所需的scroll改变，当用户循环往复于app的history中。如果需要，你可以跟踪scroll的位置轨迹<br>      length: Internet Explorer和Opera从0开始，而Firefox、Chrome和Safari从1开始。 属性声明了浏览器历史列表中的元素数量;<br>      state: 状态对象</p>
+<pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">window.history.back(); // 当前窗口游览器回话记录回退</span><br><span class="line">window.history.forward(); // 前进</span><br><span class="line">window.history.go(n); // n可正可负， 负回退，正前进</span><br><span class="line">//如果移动的位置超出了访问历史的边界，以上三个方法并不报错，而是默默的失败</span><br></pre></td></tr></table></figure>
+</code></pre><p> 路由就是指随着浏览器地址栏的变化，展示给用户的页面也不相同。<br>传统的网页根据用户访问的不同的地址，浏览器从服务器获取对应页面的内容展示给用户。这样造成服务器压力比较大，而且用户访问速度也比较慢。在这种场景下，出现了单页应用。<br>单页应用，就是只有一个页面，用户访问一个网址，服务器返回的页面始终只有一个，不管用户改变了浏览器地址栏的内容或者在页面内发生了跳转，服务器不会重新返回新的页面，而是通过相应的js操作来实现页面的更改。而地址栏内容的改变，显示不同的页面，实现的手段就是前端路由</p>
+<h3 id="第一种"><a href="#第一种" class="headerlink" title="第一种"></a>第一种</h3><p>  HTML5 History两个新增的API：history.pushState 和 history.replaceState，两个 API 都会操作浏览器的历史记录，而不会引起页面的刷新。</p>
+<p>  history.pushState方法由于添加会话历史，接受三个参数，依次为：<br>    state：一个与指定网址相关的状态对象，popstate事件触发时，该对象会传入回调函数。如果不需要这个对象，此处可以填null。<br>    title：新页面的标题，但是所有浏览器目前都忽略这个值，因此这里可以填null。<br>    url：新的网址，必须与当前页面处在同一个域。浏览器的地址栏将显示这个网址。(为空当前url)</p>
+<p>  history.replaceState()<br>    history.replaceState方法的参数与pushState方法一模一样，区别是它修改浏览历史中当前纪录。</p>
+<p>  popstate 事件 每当同一个文档的浏览历史（即history对象）出现变化时，就会触发popstate事件。<br>  需要注意的是，仅仅调用pushState方法或replaceState方法 ，并不会触发该事件，只有用户点击浏览器倒退按钮和前进按钮，或者使用JavaScript调用back、forward、go方法时才会触发。另外，该事件只针对同一个文档，如果浏览历史的切换，导致加载不同的文档，该事件也不会触发。</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">window.addEventListener(&apos;popstate&apos;, (e)=&gt; &#123;</span><br><span class="line">  console.log(e);</span><br><span class="line">&#125;, false);</span><br></pre></td></tr></table></figure>
+<h3 id="第二种"><a href="#第二种" class="headerlink" title="第二种"></a>第二种</h3><p>Hash就是url 中看到 # ,我们需要一个根据监听哈希变化触发的事件( hashchange) 事件。我们用 window.location.hash 处理哈希的改变时不会重新渲染页面，而是当作新页面加到历史记录中，这样我们跳转页面就可以在 hashchange 事件中注册 ajax 从而改变页面内容。 可以为hash的改变添加监听事件：</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">window.addEventListener(&apos;hashchange&apos;, (e)=&gt; &#123;</span><br><span class="line">  console.log(e);</span><br><span class="line">&#125;, false);</span><br></pre></td></tr></table></figure>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>  优点：<br>    从性能和用户体验的层面来比较的话，后端路由每次访问一个新页面的时候都要向服务器发送请求，然后服务器再响应请求，这个过程肯定会有延迟。而前端路由在访问一个新页面的时候仅仅是变换了一下路径而已，没有了网络延迟，对于用户体验来说会有相当大的提升。<br>    前端路由的优点有很多，比如页面持久性，像大部分音乐网站，你都可以在播放歌曲的同时，跳转到别的页面而音乐没有中断，再比如前后端彻底分离。 开发一个前端路由，主要考虑到页面的可插拔、页面的生命周期、内存管理等。</p>
+<p>  缺点：使用浏览器的前进，后退键的时候会重新发送请求，没有合理地利用缓存<br>       单页面无法记住之前滚动的位置，无法在前进，后退的时候记住滚动的位置;(scrollRestoration兼容性不好)；</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">路由 跳转</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/10/14/前端路由实现方式及页面跳转/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-移动端click延迟及zepto的穿透现象" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -694,6 +682,97 @@ lodash的思路，用迭代实现的，我就把它的源代码贴过来看一�
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2018/09/23/DOCTYPE-兼容模式和标准模式/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-frameset框架" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/11/frameset框架/">frameset框架</a>
+    </h1>
+  
+
+        
+        <a href="/2018/09/11/frameset框架/" class="archive-article-date">
+  	<time datetime="2018-09-10T16:45:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-11</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="HTML-iframe-和-frameset-的区别"><a href="#HTML-iframe-和-frameset-的区别" class="headerlink" title="HTML iframe 和 frameset 的区别"></a>HTML iframe 和 frameset 的区别</h2><p>  iframe 和 frameset 都用于html页面的框架布局。</p>
+<p>(1). iframe标签：iframe 是个内联框架，是在页面里生成个内部框架。</p>
+<p>(2). frameset 标签：frameset 定义一个框架集，包含多个子框架，每个框架都有独立的文档。</p>
+<h3 id="iframe-标签"><a href="#iframe-标签" class="headerlink" title="iframe 标签"></a>iframe 标签</h3><p>  iframe 是个内联框架，是在页面里生成个内部框架。</p>
+<p>  frameborder {int}：是否显示框架的边框；</p>
+<p>  src {URL}：指定一个资源(如网页、图片)的uri；</p>
+<p>  scrolling {boolean}：是否显示框架的滚动条；</p>
+<p>  width {int}：定义iframe的宽度；</p>
+<p>  height {int}：定义iframe的高度；</p>
+<p>应用场景： 重复嵌套页面，一个页面需要重复利用</p>
+<h3 id="frameset-标签"><a href="#frameset-标签" class="headerlink" title="frameset 标签"></a>frameset 标签</h3><p>  frameset 定义一个框架集，包含多个框架，每个框架都有独立的文档。</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">// 没有body 注意， 有的话不渲染框架</span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;title&gt;&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">  &lt;frameset &gt;</span><br><span class="line">  　　&lt;frame src=a.htm /&gt;</span><br><span class="line">  　　&lt;frame src=b.htm /&gt;</span><br><span class="line">  　　&lt;noframes&gt;&lt;/noframes&gt;</span><br><span class="line">  &lt;/frameset&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<p>  <frame src="a.htm"> ：子框架<br>  <noframes></noframes>：浏览器不支持此框架的时，显示的内容。</p>
+<p>frameset属性：<br>　rows ：表示子框架按行的样式布局。以2个子框架为例：rows=”30%,<em>“ ，表示第一个框架占整个页面30%的高度，第二个占剩下的；<br>　cols ：表示子框架按列的样式布局。以2个子框架为例：cols=”30%,</em>“ ，表示第一个框架占整个页面30%的长度，第二个占剩下的；<br>　noresize: “noresize”表示不调整子框架的范围。</p>
+<p>frame 属性：<br>  　src ：指向一个资源(如页面、图片等)的URI；<br>　　name ：指定框架的名称，以便进行框架间的操作。</p>
+<p>参照示例代码，frm1更改frm2的子集指向的页面：window.parent.frames[“frm2”].location.href = ‘b.htm’</p>
+<p>应用场景：<br>1 后台页面的管理，左边显示 菜单，右边框架 显示详细页面。批量游览简历 <a href="https://lpt.liepin.com" target="_blank" rel="noopener">https://lpt.liepin.com</a></p>
+<p>本文参考 <a href="https://www.cnblogs.com/polk6/archive/2013/05/24/3097430.html" target="_blank" rel="noopener">https://www.cnblogs.com/polk6/archive/2013/05/24/3097430.html</a> </p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">frameset iframe frame</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/09/11/frameset框架/">展开全文 >></a>
         </p>
       
 
@@ -995,11 +1074,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">数组定义 数组方法 堆栈</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">ie 兼容模式 标准模式 盒模型</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">数组定义 数组方法 堆栈</a>
+                <a href="javascript:void(0)" class="js-tag color1">路由 跳转</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1007,7 +1090,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">路由 跳转</a>
+                <a href="javascript:void(0)" class="js-tag color2">frameset iframe frame</a>
               </li>
              
               <li class="article-tag-list-item">
