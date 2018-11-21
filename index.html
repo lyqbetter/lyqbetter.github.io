@@ -295,7 +295,8 @@ m 执行多行匹配
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="常见的数组面试题；"><a href="#常见的数组面试题；" class="headerlink" title="常见的数组面试题；"></a>常见的数组面试题；</h3><p>  数组去重：<br>    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"> </span><br></pre></td></tr></table></figure></p>
+        <h3 id="常见的数组面试题；"><a href="#常见的数组面试题；" class="headerlink" title="常见的数组面试题；"></a>常见的数组面试题；</h3><p>  数组去重：<br>  Es5<br>    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">function unique(arr) &#123;</span><br><span class="line">  var newArr = [];</span><br><span class="line">  for (var i = 0; i &lt; arr.length; i++) &#123;</span><br><span class="line">    if (newArr.indexOf(arr[i]) === -1) &#123;</span><br><span class="line">      newArr.push(arr[i]);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return newArr;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function unique(arr) &#123;</span><br><span class="line">  var newArr = [],</span><br><span class="line">      newObj = &#123;&#125;,</span><br><span class="line">      arrVal,</span><br><span class="line">      type,</span><br><span class="line">      objVal;</span><br><span class="line">  for (var i = 0; i &lt; arr.length; i++) &#123;</span><br><span class="line">    arrVal = arr[i];</span><br><span class="line">    objVal = newObj[arrVal];</span><br><span class="line">    type = typeof arrVal;</span><br><span class="line">    console.log(objVal, arrVal);</span><br><span class="line">    if (!objVal) &#123;</span><br><span class="line">      newObj[arrVal] = [type];</span><br><span class="line">      newArr.push(arrVal);</span><br><span class="line">    &#125; else if (objVal.indexOf(type) == -1) &#123;</span><br><span class="line">      newObj[arrVal] = [type];</span><br><span class="line">      newArr.push(arrVal);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return newArr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>  Es6<br>    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[...new Set([1,2,1,1,1])];</span><br><span class="line"></span><br><span class="line">Array.from(new Set([1,2,1,1,1]))</span><br></pre></td></tr></table></figure></p>
 
       
 
@@ -1360,15 +1361,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">ie 兼容模式 标准模式 盒模型</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">数组定义 数组方法 堆栈</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">frameset iframe frame</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">ie 兼容模式 标准模式 盒模型</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1380,11 +1381,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">regExp 正则</a>
+                <a href="javascript:void(0)" class="js-tag color2">移动端点击事件 延迟 zepto</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">移动端点击事件 延迟 zepto</a>
+                <a href="javascript:void(0)" class="js-tag color5">regExp 正则</a>
               </li>
              
               <li class="article-tag-list-item">
