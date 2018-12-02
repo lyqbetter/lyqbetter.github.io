@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="mongodb 介绍  mongoDB与一些关系型数据库相比，它更显得轻巧、灵活，非常适合在数据规模很大、事务性不强的场合下使用。同时它也是一个对象数据库，没有表、行等概念，也没有固定的模式和结构，所有的数据以文档的形式存储。由c++语言编写，是一个分布式文件存储的开源NoSQL数据库系统。在高负载的情况下，添加更多的节点，可以保证服务器性能。mongoDB旨在为web应用提供可扩展的高性能数据存">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-02T12:15:51.104Z">
+<meta property="og:updated_time" content="2018-12-02T12:18:46.196Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="mongodb mongoose">
 <meta name="twitter:description" content="mongodb 介绍  mongoDB与一些关系型数据库相比，它更显得轻巧、灵活，非常适合在数据规模很大、事务性不强的场合下使用。同时它也是一个对象数据库，没有表、行等概念，也没有固定的模式和结构，所有的数据以文档的形式存储。由c++语言编写，是一个分布式文件存储的开源NoSQL数据库系统。在高负载的情况下，添加更多的节点，可以保证服务器性能。mongoDB旨在为web应用提供可扩展的高性能数据存">
@@ -179,9 +179,8 @@
   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// mac 下载</span><br><span class="line">brew update</span><br><span class="line"></span><br><span class="line">brew install mongodb</span><br></pre></td></tr></table></figure>
 <p>  // 启动<br>    从命令行启动<br>     执行mongod，启动MongoDB服务器，mongod有很多可配置的启动选项，可以使用mongod –help查看所有选项</p>
    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongod --config /usr/local/etc/mongod.conf 后台启动</span><br></pre></td></tr></table></figure>
-<pre><code>--dbpath：
-指定数据目录，默认是/data/db下，每个mongod进程都需要独立的数据目录，加入有3个mongod实例，就必须要有3个独立的数据目录。当mongod启动时，会在数据目录中创建mongod.lock文件。这个文件用于防止其他mongod进程使用该数据目录。若当有一个mongd启动后，再启动另一个mongod时，若再使用刚刚已经启动mongod的目录，那么会报错：
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2017-07-06T16:03:09.703+0800 I STORAGE [initandlisten] exception in initAndListen: 98 Unable to lock file: mongodb/0706/mongod.lock Resource temporarily unavailable. Is a mongod instance initAndListenready running?, terminating</span><br></pre></td></tr></table></figure>
+<p>–dbpath：<br>  指定数据目录，默认是/data/db下，每个mongod进程都需要独立的数据目录，加入有3个mongod实例，就必须要有3个独立的数据目录。当mongod启动时，会在数据目录中创建mongod.lock文件。这个文件用于防止其他mongod进程使用该数据目录。若当有一个mongd启动后，再启动另一个mongod时，若再使用刚刚已经启动mongod的目录，那么会报错：</p>
+<pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2017-07-06T16:03:09.703+0800 I STORAGE [initandlisten] exception in initAndListen: 98 Unable to lock file: mongodb/0706/mongod.lock Resource temporarily unavailable. Is a mongod instance initAndListenready running?, terminating</span><br></pre></td></tr></table></figure>
 </code></pre><p>  –port：<br>  指定服务器监听的端口号。默认端口号为27017，要是运行多个mongod，必须指定不同的端口号<br>  若有一个27017的端口已经使用了，那么如果启动第二个mongod的时候，若还指定27017的话，会报错：</p>
 <h2 id="mongoose"><a href="#mongoose" class="headerlink" title="mongoose"></a>mongoose</h2><pre><code>mongoose是mongoDB的一个对象模型工具，是基于node-mongodb-native开发的mongoDB的nodejs驱动，可以在异步的环境下执行。同时它也是针对mongoDB操作的一个对象模型库，封装了mongoDB对文档的一些增删改查等常用方法，让nodejs操作mongoDB数据库变得更加容易。
 </code></pre><p>  model.js<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">// npm install mongoose</span><br><span class="line"></span><br><span class="line">const mongoose = require(&apos;mongoose&apos;)</span><br><span class="line">// 链接mongo 并且使用liyingiq这个集合</span><br><span class="line">const DB_URL = &apos;mongodb://localhost:27017/liyingqi-chat&apos;</span><br><span class="line">// 连接数据库</span><br><span class="line">mongoose.connect(DB_URL)</span><br><span class="line">// 数据模型</span><br><span class="line">const models = &#123;</span><br><span class="line">  user:&#123;</span><br><span class="line">    &apos;user&apos;:&#123;type:String, &apos;required&apos;:true&#125;,</span><br><span class="line">    &apos;pwd&apos;:&#123;type:String, &apos;required&apos;:true&#125;,</span><br><span class="line">    &apos;type&apos;:&#123;&apos;type&apos;:String, &apos;required&apos;:true&#125;,</span><br><span class="line">    //头像</span><br><span class="line">    &apos;avatar&apos;:&#123;&apos;type&apos;:String&#125;,</span><br><span class="line">    // 个人简介或者职位简介</span><br><span class="line">    &apos;desc&apos;:&#123;&apos;type&apos;:String&#125;,</span><br><span class="line">    // 职位名</span><br><span class="line">    &apos;title&apos;:&#123;&apos;type&apos;:String&#125;,</span><br><span class="line">    // 如果你是boss 还有两个字段</span><br><span class="line">    &apos;company&apos;:&#123;&apos;type&apos;:String&#125;,</span><br><span class="line">    &apos;money&apos;:&#123;&apos;type&apos;:String&#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">for(let m in models)&#123;</span><br><span class="line">  // 建表 存储数据</span><br><span class="line">  mongoose.model(m, new mongoose.Schema(models[m]))</span><br><span class="line">&#125;</span><br><span class="line">// 导出</span><br><span class="line">module.exports = &#123;</span><br><span class="line">  getModel:function(name)&#123;</span><br><span class="line">    return mongoose.model(name)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
@@ -475,11 +474,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">regExp 正则</a>
+                <a href="javascript:void(0)" class="js-tag color1">路由 跳转</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">路由 跳转</a>
+                <a href="javascript:void(0)" class="js-tag color5">regExp 正则</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -487,11 +486,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">mongodb mongoose</a>
+                <a href="javascript:void(0)" class="js-tag color2">移动端点击事件 延迟 zepto</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">移动端点击事件 延迟 zepto</a>
+                <a href="javascript:void(0)" class="js-tag color2">mongodb mongoose</a>
               </li>
              
               <li class="article-tag-list-item">
