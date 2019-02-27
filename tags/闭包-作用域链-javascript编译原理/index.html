@@ -6,22 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>作用域 | Hexo</title>
+  <title>Tag: 闭包 作用域链 javascript编译原理 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="作用域  几乎所有的编程语言最基本的功能，储存变量中的值，并且之后对这个值进行访问和修改，这些值存在哪里，我们如何获取他们？这些问题说明我们需要设计一套良好的规则来储存变量，并且之后可以方便地找到这些变量，这些规则我们称作“作用域” javascript 运行原理  javaScript本质上是一种解释型语言，与编译型语言不同的是它需要一遍执行一边解析，而编译型语言在执行时已经完成编译，可直接执行">
-<meta name="keywords" content="作用域 作用域链 javascript运行原理">
-<meta property="og:type" content="article">
-<meta property="og:title" content="作用域">
-<meta property="og:url" content="http://yoursite.com/2019/02/26/作用域/index.html">
+  <meta name="description" content="李英奇的博客">
+<meta name="keywords" content="前端 博客 大牛">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/tags/闭包-作用域链-javascript编译原理/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="作用域  几乎所有的编程语言最基本的功能，储存变量中的值，并且之后对这个值进行访问和修改，这些值存在哪里，我们如何获取他们？这些问题说明我们需要设计一套良好的规则来储存变量，并且之后可以方便地找到这些变量，这些规则我们称作“作用域” javascript 运行原理  javaScript本质上是一种解释型语言，与编译型语言不同的是它需要一遍执行一边解析，而编译型语言在执行时已经完成编译，可直接执行">
+<meta property="og:description" content="李英奇的博客">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://static.cnodejs.org/FhKw46OcBhzAeyUk2mkf0hj8GsKK">
-<meta property="og:updated_time" content="2019-02-27T03:06:12.500Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="作用域">
-<meta name="twitter:description" content="作用域  几乎所有的编程语言最基本的功能，储存变量中的值，并且之后对这个值进行访问和修改，这些值存在哪里，我们如何获取他们？这些问题说明我们需要设计一套良好的规则来储存变量，并且之后可以方便地找到这些变量，这些规则我们称作“作用域” javascript 运行原理  javaScript本质上是一种解释型语言，与编译型语言不同的是它需要一遍执行一边解析，而编译型语言在执行时已经完成编译，可直接执行">
-<meta name="twitter:image" content="http://static.cnodejs.org/FhKw46OcBhzAeyUk2mkf0hj8GsKK">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="李英奇的博客">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -157,200 +154,60 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-作用域" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      作用域
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2019" class="archive-year">2019</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2019/02/26/作用域-闭包-js编译原理/" class="archive-article-date">
+  	<time datetime="2019-02-26T09:46:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-26</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2019/02/26/作用域-闭包-js编译原理/">作用域</a>
     </h1>
   
 
-        
-        <a href="/2019/02/26/作用域/" class="archive-article-date">
-  	<time datetime="2019-02-26T09:46:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h2><p>  几乎所有的编程语言最基本的功能，储存变量中的值，并且之后对这个值进行访问和修改，这些值存在哪里，我们如何获取他们？这些问题说明我们需要设计一套良好的规则来储存变量，并且之后可以方便地找到这些变量，这些规则我们称作“作用域”</p>
-<h2 id="javascript-运行原理"><a href="#javascript-运行原理" class="headerlink" title="javascript 运行原理"></a>javascript 运行原理</h2><p>  javaScript本质上是一种解释型语言，与编译型语言不同的是它需要一遍执行一边解析，而编译型语言在执行时已经完成编译，可直接执行，有更快的执行速度</p>
-<p> 解析性语言： 边解释边执行<br>  源代码===&gt; 抽象语法树 ===&gt;解析器解析和执行<br> 编译性语言：先编译在执行<br>  源代码===&gt; 抽象语法树 ===》中间表示形式 ===》本地代码</p>
-<p>JavaScript语言是解释型语言，为了提高性能，引入了Java虚拟机和C++编译器中的众多技术。现在JavaScript引擎的执行过程大致是：</p>
-<p>　　源代码-→抽象语法树-→字节码-→JIT（just in time 即时编译）-→本地代码（v8没有中间字节码）<br>V8更加直接的将抽象语法树通过JIT技术转换成本地代码，放弃了在字节码阶段可以进行的一些性能优化，但保证了执行速度。<br>　　但是在2017年4月底，v8 的 5.9 版本发布了，新增了一个 Ignition 字节码解释器，将默认启动，从此之后将与JSCore有大致相同的流程。做出这一改<br>  变的原因为：（主要动机）减轻机器码占用的内存空间，即牺牲时间换空间；提高代码的启动速度<br> 　　因为之前 v8 选择了直接将 JS 代码编译到机器代码执行，机器码的执行性能已经非常之高，而这次引入字节码则是选择编译 JS </p>
-<p>  代码到一个中间态的字节码，执行时是解释执行，性能是低于机器代码的。最终的性能测试势必会降低，而不是提高。那么 V8 为什么要做这样一个退步的选择呢？为 V8 引入字节码的动机又是什么呢？笔者总结下来有三条：<br>      –（主要动机）减轻机器码占用的内存空间，即牺牲时间换空间<br>      –  提高代码的启动速度<br>      – 对 v8 的代码进行重构，降低 v8 的代码复杂度<br>  　　故事得从 Chrome 的一个 bug 说起： <a href="http://crbug.com/593477" target="_blank" rel="noopener">http://crbug.com/593477</a> 。Bug 的报告人发现，当在 Chrome 51 (canary) 浏览器下加载、退出、重新加载 facebook 多次，并打开 about:tracing 里的各项监控开关，可以发现第一次加载时 v8.CompileScript 花费了 165 ms，再次加载加入 V8.ParseLazy 居然依然花费了 376 ms。按说如果 Facebook 网站的 js 脚本没有变，Chrome 的缓存功能应该缓存了对 js 脚本的解析结果，不该花费这么久。这是为什么呢？这就是之前 v8 将 JS 代码编译成机器码所带来的问题。因为机器码占空间很大，v8 没有办法把 Facebook 的所有 js ,代码编译成机器码缓存下来，因为这样不仅缓存占用的内存、磁盘空间很大，而且退出 Chrome，再打开时序列化、反序列化缓存所花费的时间也很长，时间、空间成本都接受不了。所以 v8 退而求其次，只编译最外层的 js代码，也就是下图这个例子里面绿色的部分。那么内部的代码（如下图中的黄色、红色的部分）是什么时候编译的呢？v8推迟到第一次被调用的时候再编译。这时间上的推移还导致另外一个短板，就是代码必须被解析多次——绿色的代码一次、黄色的代码再解析一次（当 new Person 被调用）、红色的代码再解析一次（当 doWork() 被调用）。因此，如果你的 js 代码的闭包套了 n 层，那么最终他们至少会被 v8 解析 n 次。<br>    <img src="http://static.cnodejs.org/FhKw46OcBhzAeyUk2mkf0hj8GsKK" alt="Image text"><br>     Facebook 的网站之所以收到这个设计带来的负面的性能影响，就是因为他们的前段工程流程中最后把各个独立的 module<br>   编译成了一个单独的文件，其中用到了很多闭包<br>   刚才提到了机器码占空间大的一个坏处，就是不能一次性编译全部的代码。机器码占空间大还有另外一个坏处，就是一些只运行一次的代码浪费了宝贵的内存<br>   资源。正如上面 Facebook 中的 __d() 系列函数，他们的作用可能只是注册、初始化各个模块组件，而一旦初始化完成便不会再执行。但由于机器码占空间大，这些只执行一次的代码也会在内存中长期存在、长期占用空间。<br>   而引入字节码之后(进行代码优化)，占空间的问题就可以得到缓解。通过恰当地设计字节码的编码方式，字节码可以做到比机器码紧凑很多。V8 引入Ignition 字节码后，代码的内存占用确实降低了；</p>
-<h3 id="预编译"><a href="#预编译" class="headerlink" title="预编译"></a>预编译</h3><p>  javascript引擎主要负责整个javascript程序编译及执行过程；<br>作用域：引擎的一个好朋友，负责收集和维护所有声明的标识符，组成的一系列查询，并实施一套非常严格的规则，确定当前代码对这些标识符的访问权限；</p>
-<h4 id="总的来说：js运行"><a href="#总的来说：js运行" class="headerlink" title="总的来说：js运行"></a>总的来说：js运行</h4><p>   词法分析 语法分析（AST）,预编译，解析执行</p>
-<p>语法分析和预编译发生在解析执行之前；<br>      1.词法分析：将字符组成的字符串分解成（对编程语言来说有意义）的代码块，这些代码块称为词法单元<br>      2.语法分析：这个过程将词法单元流转换成一个由元素逐级嵌套组成的代表了js程序语法的结构的树</p>
-<h4 id="预编译分类："><a href="#预编译分类：" class="headerlink" title="预编译分类："></a>预编译分类：</h4><p>全局预编译：脚本代码块script执行前,查找全局变量声明（包括隐式全局变量声明,省略var声明变量名作全局对象的属性,值为undefined<br>函数预编译：<br>  预编译(函数执行前)※<br>    1.创建AO对象（Active Object）<br>    2.查找函数形参及函数内变量声明，形参名及变量名作为AO对象的属性，值为undefined<br>    3.实参形参相统一，实参值赋给形参<br>    4.查找函数声明，函数名作为AO对象的属性，值为函数引用<br>解析执行：解析执行编译好的机械码（预编译阶段将抽象语法树转为中间字节码通过jit转为机械码）</p>
-<p>举例：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    var a = 1;// 变量声明</span><br><span class="line">    <span class="keyword">function</span> b(y)&#123;//函数声明</span><br><span class="line">        var x = 1;</span><br><span class="line">        console.log(<span class="string">'so easy'</span>);</span><br><span class="line">    &#125;;</span><br><span class="line">    var c = <span class="function"><span class="title">function</span></span>()&#123;//是变量声明而不是函数声明！！</span><br><span class="line">        //...</span><br><span class="line">    &#125;</span><br><span class="line">    b(100);</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    var d = 0;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
-<p>看看javascript引擎对这段代码做了什么？<br>  1.页面产生便创建了GO全局对象（Global Object）（也就是大家熟悉的window对象）<br>  2.第一个脚本文件加载<br>  3.脚本加载完毕后，分析语法是否合法<br>  4.开始预编译<br>  5.查找变量声明，作为GO属性，值赋予undefined<br>  6.查找函数声明，作为GO属性，值赋予函数体</p>
-<p>伪代码：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">GO/window = &#123;</span><br><span class="line">    //页面加载创建GO同时，创建了document、navigator、screen等等属性，此处省略</span><br><span class="line">    a: undefined,</span><br><span class="line">    c: undefined，</span><br><span class="line">    b: <span class="keyword">function</span>(y)&#123;</span><br><span class="line">        var x = 1;</span><br><span class="line">        console.log(<span class="string">'so easy'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>执行函数b之前，发生预编译<br>  创建AO活动对象（Active Object）<br>  查找形参和变量声明，值赋予undefined<br>  实参值赋给形参<br>  查找函数声明，值赋予函数体</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">AO = &#123;</span><br><span class="line">    //创建AO同时，创建了arguments等等属性，此处省略</span><br><span class="line">    y: 100,</span><br><span class="line">    x: undefined</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>javascript解释执行函数中代码<br>  第一个脚本文件执行完毕，加载第二个脚本文件<br>  第二个脚本文件加载完毕后，进行语法分析<br>  语法分析完毕，开始预编译<br>  重复最开始的预编译步骤…</p>
-<h2 id="执行环境及作用域"><a href="#执行环境及作用域" class="headerlink" title="执行环境及作用域"></a>执行环境及作用域</h2><p>执行环境（有时也称为环境）也被尘称为执行期上下文:执行环境定义了变量和函数并提供了执行他们的环境，每个执行环境都有一个与之关联的变量对象，环境中的变量对象和函数都保存在这个对象中；<br>全局执行环境：宿主环境不同表示的执行对象也不同，游览器中window;<br>函数执行环境：当执行流进入一个函数时，函数环境被推入一个环境栈中，而在这个函数执行之后，栈将其弹出；</p>
-<p>销毁：某个执行环境中的代码和方法执行完之后，改环境被销毁，保存在其中所有变量和函数定义也都被随之销毁（全局执行环境直到应用退去才被销毁）</p>
-<h3 id="作用域链："><a href="#作用域链：" class="headerlink" title="作用域链："></a>作用域链：</h3><p>  当代码在一个环境中执行时，会创建变量（函数）对象的一个作用域链(scope chain);作用域链的用途，是创建的函数保证对执行环境中变量和函数有序的访问；<br>    活动对象：作用域的最前端，是当前执行函数所在的执行环境，将其活动对象（activation object）作为变量的对象；<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">// sort 比较函数</span><br><span class="line"><span class="keyword">function</span> compare(value1, value2) &#123;</span><br><span class="line">  <span class="keyword">if</span> (value1 &lt; value2) &#123;</span><br><span class="line">    <span class="built_in">return</span> -1;</span><br><span class="line"></span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (value1 &gt; value2) &#123;</span><br><span class="line">    <span class="built_in">return</span> 1;</span><br><span class="line"></span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="built_in">return</span> 0</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">compare(5, 10);</span><br></pre></td></tr></table></figure></p>
-<p>后台的每一个执行环境都有一个表示变量的对象—变量对象、全局环境的变量对象始终存在，像compare()，函数这样局部环境变量对象只在函数执行过程中存在。<br>  创建compare()函数的时候，会创建一个预先包含全局变量对象（global|| window）的作用域链，这个对象被保存在函数内部的[[scope]]属性中；(<br>    发生在预编译阶段)<br>    执行compare()函数的时候，会为函数创建一个执行环境，然后通过复制[[scope]]属性中的对象构建起执行环境的作用域链；（发什么在解析执行阶段）<br>  此后又有一个活动对象被创建，被推入执行队列的最前端</p>
-<h2 id="垃圾回收机制"><a href="#垃圾回收机制" class="headerlink" title="垃圾回收机制"></a>垃圾回收机制</h2>
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>感谢打赏<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="/img/wixin.png">
-                      <span class="reward-type">微信</span>
-                    </div>
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">作用域 作用域链 javascript运行原理</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">闭包 作用域链 javascript编译原理</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/02/26/作用域/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2019/02/26/闭包/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          闭包
-        
-      </div>
-    </a>
   
   
-    <a href="/2019/02/26/游览器结构/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">游览器结构</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-  
+    </div></section>
   
 
-  
-
-  
-
-  
+    
 
 
           </div>
@@ -373,9 +230,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
@@ -443,15 +300,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">ie 兼容模式 标准模式 盒模型</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">数组定义 数组方法 堆栈</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">mongodb mongoose</a>
+                <a href="javascript:void(0)" class="js-tag color2">ie 兼容模式 标准模式 盒模型</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -463,7 +316,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">作用域 作用域链 javascript运行原理</a>
+                <a href="javascript:void(0)" class="js-tag color2">mongodb mongoose</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -479,11 +332,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">浙江 杭州 旅游攻略</a>
+                <a href="javascript:void(0)" class="js-tag color3">闭包 作用域链 javascript编译原理</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">http https</a>
+                <a href="javascript:void(0)" class="js-tag color1">浙江 杭州 旅游攻略</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -491,7 +344,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">闭包，作用域</a>
+                <a href="javascript:void(0)" class="js-tag color1">http https</a>
               </li>
              
               <li class="article-tag-list-item">
