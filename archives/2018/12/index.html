@@ -804,14 +804,14 @@
 
 <script>
   var GUEST = ['nick', 'mail', 'link'];
-  var guest = 'mail';
+  var guest = 'nick,mail,link';
   guest = guest.split(',').filter(function(item) {
     return GUEST.indexOf(item) > -1;
   });
   new Valine({
     el: '#comments',
-    verify: false,
-    notify: false,
+    verify: true,
+    notify: true,
     appId: 'iniTISa2YMNIdqFT99GrBua1-gzGzoHsz',
     appKey: 'yXIUo5ajDuxW9qX9ixHIKIeI',
     placeholder: 'Just go go',
