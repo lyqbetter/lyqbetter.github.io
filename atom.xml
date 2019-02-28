@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Hexo</title>
+  
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://liyingqi1.com/"/>
+  <updated>2019-02-26T09:47:43.725Z</updated>
+  <id>https://liyingqi1.com/</id>
+  
+  <author>
+    <name>李英奇</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>原型链</title>
+    <link href="https://liyingqi1.com/2019/02/26/%E5%8E%9F%E5%9E%8B%E9%93%BE/"/>
+    <id>https://liyingqi1.com/2019/02/26/原型链/</id>
+    <published>2019-02-26T09:47:43.000Z</published>
+    <updated>2019-02-26T09:47:43.725Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>游览器结构</title>
+    <link href="https://liyingqi1.com/2019/02/26/%E6%B8%B8%E8%A7%88%E5%99%A8%E7%BB%93%E6%9E%84/"/>
+    <id>https://liyingqi1.com/2019/02/26/游览器结构/</id>
+    <published>2019-02-26T09:25:07.000Z</published>
+    <updated>2019-02-26T09:25:07.427Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>前端模块化</title>
+    <link href="https://liyingqi1.com/2019/02/26/%E5%89%8D%E7%AB%AF%E6%A8%A1%E5%9D%97%E5%8C%96/"/>
+    <id>https://liyingqi1.com/2019/02/26/前端模块化/</id>
+    <published>2019-02-26T06:05:36.000Z</published>
+    <updated>2019-02-26T09:02:52.073Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+      <category term="AMD / CMD / es6模块化" scheme="https://liyingqi1.com/tags/AMD-CMD-es6%E6%A8%A1%E5%9D%97%E5%8C%96/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>webpack打包原理</title>
+    <link href="https://liyingqi1.com/2019/02/26/webpack%E6%89%93%E5%8C%85%E5%8E%9F%E7%90%86/"/>
+    <id>https://liyingqi1.com/2019/02/26/webpack打包原理/</id>
+    <published>2019-02-26T05:35:48.000Z</published>
+    <updated>2019-02-26T05:35:48.218Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>DOM</title>
+    <link href="https://liyingqi1.com/2019/01/05/DOM/"/>
+    <id>https://liyingqi1.com/2019/01/05/DOM/</id>
+    <published>2019-01-05T04:29:40.000Z</published>
+    <updated>2019-01-05T04:29:40.730Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>网络部分</title>
+    <link href="https://liyingqi1.com/2019/01/02/%E7%BD%91%E7%BB%9C%E9%83%A8%E5%88%86/"/>
+    <id>https://liyingqi1.com/2019/01/02/网络部分/</id>
+    <published>2019-01-02T05:21:33.000Z</published>
+    <updated>2019-01-02T05:21:55.609Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+      <category term="http https" scheme="https://liyingqi1.com/tags/http-https/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>mongodb mongoose</title>
+    <link href="https://liyingqi1.com/2018/12/02/mongodb-mongoose/"/>
+    <id>https://liyingqi1.com/2018/12/02/mongodb-mongoose/</id>
+    <published>2018-12-01T17:36:01.000Z</published>
+    <updated>2018-12-02T12:27:10.246Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;mongodb-介绍&quot;&gt;&lt;a href=&quot;#mongodb-介绍&quot; class=&quot;headerlink&quot; title=&quot;mongodb 介绍&quot;&gt;&lt;/a&gt;mongodb 介绍&lt;/h2&gt;&lt;p&gt;  mongoDB与一些关系型数据库相比，它更显得轻巧、灵活，非常适合在数据
+      
+    
+    </summary>
+    
+    
+      <category term="mongodb mongoose" scheme="https://liyingqi1.com/tags/mongodb-mongoose/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>作用域</title>
+    <link href="https://liyingqi1.com/2018/11/26/%E4%BD%9C%E7%94%A8%E5%9F%9F-%E9%97%AD%E5%8C%85-js%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/"/>
+    <id>https://liyingqi1.com/2018/11/26/作用域-闭包-js编译原理/</id>
+    <published>2018-11-26T09:46:42.000Z</published>
+    <updated>2019-02-28T02:49:02.116Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;作用域&quot;&gt;&lt;a href=&quot;#作用域&quot; class=&quot;headerlink&quot; title=&quot;作用域&quot;&gt;&lt;/a&gt;作用域&lt;/h2&gt;&lt;p&gt;  几乎所有的编程语言最基本的功能，储存变量中的值，并且之后对这个值进行访问和修改，这些值存在哪里，我们如何获取他们？这些问题说明我
+      
+    
+    </summary>
+    
+    
+      <category term="闭包 作用域链 javascript编译原理" scheme="https://liyingqi1.com/tags/%E9%97%AD%E5%8C%85-%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE-javascript%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>模块话</title>
+    <link href="https://liyingqi1.com/2018/11/22/%E6%A8%A1%E5%9D%97%E8%AF%9D/"/>
+    <id>https://liyingqi1.com/2018/11/22/模块话/</id>
+    <published>2018-11-22T12:37:26.000Z</published>
+    <updated>2018-11-22T12:37:26.465Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>redux</title>
+    <link href="https://liyingqi1.com/2018/11/22/redux/"/>
+    <id>https://liyingqi1.com/2018/11/22/redux/</id>
+    <published>2018-11-22T10:19:49.000Z</published>
+    <updated>2018-11-22T10:19:49.362Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>regExp</title>
+    <link href="https://liyingqi1.com/2018/11/16/regExp/"/>
+    <id>https://liyingqi1.com/2018/11/16/regExp/</id>
+    <published>2018-11-16T13:01:10.000Z</published>
+    <updated>2018-11-20T18:32:40.982Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;正则表达式的作用&quot;&gt;&lt;a href=&quot;#正则表达式的作用&quot; class=&quot;headerlink&quot; title=&quot;正则表达式的作用&quot;&gt;&lt;/a&gt;正则表达式的作用&lt;/h2&gt;&lt;p&gt;  匹配特殊字符或有特殊匹配原则的字符的最佳选择&lt;/p&gt;
+&lt;p&gt;转义字符：\ 和特殊字符组合
+      
+    
+    </summary>
+    
+    
+      <category term="regExp 正则" scheme="https://liyingqi1.com/tags/regExp-%E6%AD%A3%E5%88%99/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>js-常见面试题</title>
+    <link href="https://liyingqi1.com/2018/11/16/js-%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
+    <id>https://liyingqi1.com/2018/11/16/js-常见面试题/</id>
+    <published>2018-11-16T12:14:53.000Z</published>
+    <updated>2019-02-21T00:59:46.878Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;常见的数组面试题；&quot;&gt;&lt;a href=&quot;#常见的数组面试题；&quot; class=&quot;headerlink&quot; title=&quot;常见的数组面试题；&quot;&gt;&lt;/a&gt;常见的数组面试题；&lt;/h3&gt;&lt;p&gt;  数组去重：&lt;br&gt;  Es5&lt;br&gt;    &lt;figure class=&quot;hig
+      
+    
+    </summary>
+    
+    
+      <category term="面试题" scheme="https://liyingqi1.com/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>杭州旅游攻略</title>
+    <link href="https://liyingqi1.com/2018/11/16/%E6%9D%AD%E5%B7%9E%E6%97%85%E6%B8%B8%E6%94%BB%E7%95%A5/"/>
+    <id>https://liyingqi1.com/2018/11/16/杭州旅游攻略/</id>
+    <published>2018-11-16T09:10:26.000Z</published>
+    <updated>2018-11-16T10:18:34.349Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;第一天：&lt;br&gt;  西湖：&lt;br&gt;    苏堤春晓：贯穿西湖南北风景区的林荫大道；全长三公里，苏题栈下车&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;断桥残雪：断桥位于白堤东段；一说起平湖秋月的白堤到此为而断，称之为断桥；典故：白素贞许仙相会；断桥站下车；
+
+平湖秋月：南宋时平湖秋月并无
+      
+    
+    </summary>
+    
+    
+      <category term="浙江 杭州 旅游攻略" scheme="https://liyingqi1.com/tags/%E6%B5%99%E6%B1%9F-%E6%9D%AD%E5%B7%9E-%E6%97%85%E6%B8%B8%E6%94%BB%E7%95%A5/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>js数组方法总结</title>
+    <link href="https://liyingqi1.com/2018/11/09/Array-%E6%95%B0%E7%BB%84/"/>
+    <id>https://liyingqi1.com/2018/11/09/Array-数组/</id>
+    <published>2018-11-09T14:51:10.000Z</published>
+    <updated>2019-02-28T08:09:57.232Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;数组定义&quot;&gt;&lt;a href=&quot;#数组定义&quot; class=&quot;headerlink&quot; title=&quot;数组定义&quot;&gt;&lt;/a&gt;数组定义&lt;/h2&gt;&lt;p&gt;  javascript基础数据类型为： Number, String, Boolean, null, undefined,
+      
+    
+    </summary>
+    
+      <category term="javascript" scheme="https://liyingqi1.com/categories/javascript/"/>
+    
+    
+      <category term="数组定义 数组方法 堆栈" scheme="https://liyingqi1.com/tags/%E6%95%B0%E7%BB%84%E5%AE%9A%E4%B9%89-%E6%95%B0%E7%BB%84%E6%96%B9%E6%B3%95-%E5%A0%86%E6%A0%88/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>前端路由实现方式及页面跳转</title>
+    <link href="https://liyingqi1.com/2018/10/14/%E5%89%8D%E7%AB%AF%E8%B7%AF%E7%94%B1%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F%E5%8F%8A%E9%A1%B5%E9%9D%A2%E8%B7%B3%E8%BD%AC/"/>
+    <id>https://liyingqi1.com/2018/10/14/前端路由实现方式及页面跳转/</id>
+    <published>2018-10-14T13:17:36.000Z</published>
+    <updated>2018-11-14T17:08:39.388Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;a标签的target属性&quot;&gt;&lt;a href=&quot;#a标签的target属性&quot; class=&quot;headerlink&quot; title=&quot;a标签的target属性&quot;&gt;&lt;/a&gt;a标签的target属性&lt;/h2&gt;&lt;p&gt;  (1).  默认_self属性在当前框架，或者游览器中打
+      
+    
+    </summary>
+    
+    
+      <category term="路由 跳转" scheme="https://liyingqi1.com/tags/%E8%B7%AF%E7%94%B1-%E8%B7%B3%E8%BD%AC/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>移动端click延迟及zepto的穿透现象</title>
+    <link href="https://liyingqi1.com/2018/10/05/%E7%A7%BB%E5%8A%A8%E7%AB%AFclick%E5%BB%B6%E8%BF%9F%E5%8F%8Azepto%E7%9A%84%E7%A9%BF%E9%80%8F%E7%8E%B0%E8%B1%A1/"/>
+    <id>https://liyingqi1.com/2018/10/05/移动端click延迟及zepto的穿透现象/</id>
+    <published>2018-10-05T11:52:01.000Z</published>
+    <updated>2018-11-05T13:35:39.400Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;穿透现象与click的延迟解决方法是分不开的，若要了解穿透现象，需要先了解click延迟的解决原理。&lt;/p&gt;
+&lt;h3 id=&quot;移动端click事件300ms的延迟现象的原因：&quot;&gt;&lt;a href=&quot;#移动端click事件300ms的延迟现象的原因：&quot; class=&quot;heade
+      
+    
+    </summary>
+    
+    
+      <category term="移动端点击事件 延迟 zepto" scheme="https://liyingqi1.com/tags/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%82%B9%E5%87%BB%E4%BA%8B%E4%BB%B6-%E5%BB%B6%E8%BF%9F-zepto/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>DOCTYPE 兼容模式和标准模式</title>
+    <link href="https://liyingqi1.com/2018/09/23/DOCTYPE-%E5%85%BC%E5%AE%B9%E6%A8%A1%E5%BC%8F%E5%92%8C%E6%A0%87%E5%87%86%E6%A8%A1%E5%BC%8F/"/>
+    <id>https://liyingqi1.com/2018/09/23/DOCTYPE-兼容模式和标准模式/</id>
+    <published>2018-09-23T08:52:21.000Z</published>
+    <updated>2018-09-23T10:10:39.973Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;所谓的标准模式是指，浏览器按W3C标准解析执行代码；怪异模式则是使用浏览器自己的方式解析执行代码，因为不同浏览器解析执行的方式不一样，所以我们称之为怪异模式。浏览器解析时到底使用标准模式还是怪异模式，与你网页中的DTD声明直&lt;br&gt;接相关，DTD声明定义了标准文档的类型（标
+      
+    
+    </summary>
+    
+    
+      <category term="ie 兼容模式 标准模式 盒模型" scheme="https://liyingqi1.com/tags/ie-%E5%85%BC%E5%AE%B9%E6%A8%A1%E5%BC%8F-%E6%A0%87%E5%87%86%E6%A8%A1%E5%BC%8F-%E7%9B%92%E6%A8%A1%E5%9E%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>frameset框架</title>
+    <link href="https://liyingqi1.com/2018/09/11/frameset%E6%A1%86%E6%9E%B6/"/>
+    <id>https://liyingqi1.com/2018/09/11/frameset框架/</id>
+    <published>2018-09-10T16:45:11.000Z</published>
+    <updated>2018-11-14T17:11:59.091Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;HTML-iframe-和-frameset-的区别&quot;&gt;&lt;a href=&quot;#HTML-iframe-和-frameset-的区别&quot; class=&quot;headerlink&quot; title=&quot;HTML iframe 和 frameset 的区别&quot;&gt;&lt;/a&gt;HTML ifr
+      
+    
+    </summary>
+    
+    
+      <category term="frameset iframe frame" scheme="https://liyingqi1.com/tags/frameset-iframe-frame/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="https://liyingqi1.com/2018/09/08/hexo%E5%91%BD%E4%BB%A4%E8%A1%8C/"/>
+    <id>https://liyingqi1.com/2018/09/08/hexo命令行/</id>
+    <published>2018-09-08T11:14:16.238Z</published>
+    <updated>2019-02-27T02:58:40.498Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>长列表性能优化</title>
+    <link href="https://liyingqi1.com/2018/07/02/%E9%95%BF%E5%88%97%E8%A1%A8%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/"/>
+    <id>https://liyingqi1.com/2018/07/02/长列表性能优化/</id>
+    <published>2018-07-02T14:14:34.000Z</published>
+    <updated>2018-11-04T09:31:45.804Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;前端的业务开发中会遇到一些无法使用分页方式来加载的列表，我们一般把这种列表叫做长列表。在本篇文章中，我们把长列表定义成数据长度大于 1000 条，并且不能使用分页的形式来展示的列表。&lt;/p&gt;
+&lt;h2 id=&quot;研究的意义&quot;&gt;&lt;a href=&quot;#研究的意义&quot; class=&quot;he
+      
+    
+    </summary>
+    
+    
+      <category term="web优化 长列表" scheme="https://liyingqi1.com/tags/web%E4%BC%98%E5%8C%96-%E9%95%BF%E5%88%97%E8%A1%A8/"/>
+    
+  </entry>
+  
+</feed>
