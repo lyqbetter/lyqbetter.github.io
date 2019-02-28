@@ -3,17 +3,17 @@
   <entry>
     <title><![CDATA[原型链]]></title>
     <url>%2F2019%2F02%2F26%2F%E5%8E%9F%E5%9E%8B%E9%93%BE%2F</url>
-    <content type="text"></content>
+    <content type="text"><![CDATA[]]></content>
   </entry>
   <entry>
     <title><![CDATA[游览器结构]]></title>
     <url>%2F2019%2F02%2F26%2F%E6%B8%B8%E8%A7%88%E5%99%A8%E7%BB%93%E6%9E%84%2F</url>
-    <content type="text"></content>
+    <content type="text"><![CDATA[]]></content>
   </entry>
   <entry>
     <title><![CDATA[前端模块化]]></title>
     <url>%2F2019%2F02%2F26%2F%E5%89%8D%E7%AB%AF%E6%A8%A1%E5%9D%97%E5%8C%96%2F</url>
-    <content type="text"></content>
+    <content type="text"><![CDATA[]]></content>
       <tags>
         <tag>AMD / CMD / es6模块化</tag>
       </tags>
@@ -21,17 +21,17 @@
   <entry>
     <title><![CDATA[webpack打包原理]]></title>
     <url>%2F2019%2F02%2F26%2Fwebpack%E6%89%93%E5%8C%85%E5%8E%9F%E7%90%86%2F</url>
-    <content type="text"></content>
+    <content type="text"><![CDATA[]]></content>
   </entry>
   <entry>
     <title><![CDATA[DOM]]></title>
     <url>%2F2019%2F01%2F05%2FDOM%2F</url>
-    <content type="text"></content>
+    <content type="text"><![CDATA[]]></content>
   </entry>
   <entry>
     <title><![CDATA[网络部分]]></title>
     <url>%2F2019%2F01%2F02%2F%E7%BD%91%E7%BB%9C%E9%83%A8%E5%88%86%2F</url>
-    <content type="text"></content>
+    <content type="text"><![CDATA[]]></content>
       <tags>
         <tag>http https</tag>
       </tags>
@@ -55,12 +55,12 @@
   <entry>
     <title><![CDATA[模块话]]></title>
     <url>%2F2018%2F11%2F22%2F%E6%A8%A1%E5%9D%97%E8%AF%9D%2F</url>
-    <content type="text"></content>
+    <content type="text"><![CDATA[]]></content>
   </entry>
   <entry>
     <title><![CDATA[redux]]></title>
     <url>%2F2018%2F11%2F22%2Fredux%2F</url>
-    <content type="text"></content>
+    <content type="text"><![CDATA[]]></content>
   </entry>
   <entry>
     <title><![CDATA[regExp]]></title>
