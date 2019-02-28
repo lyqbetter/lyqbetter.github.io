@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2"/>
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.0"/>
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.0.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.0.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '7.0.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false,"dimmer":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="作用域  几乎所有的编程语言最基本的功能，储存变量中的值，并且之后对这个值进行访问和修改，这些值存在哪里，我们如何获取他们？这些问题说明我们需要设计一套良好的规则来储存变量，并且之后可以方便地找到这些变量，这些规则我们称作“作用域” javascript 运行原理  javaScript本质上是一种解释型语言，与编译型语言不同的是它需要一遍执行一边解析，而编译型语言在执行时已经完成编译，可直接执行">
+<meta name="keywords" content="闭包 作用域链 javascript编译原理">
+<meta property="og:type" content="article">
+<meta property="og:title" content="作用域">
+<meta property="og:url" content="http://yoursite.com/2018/11/26/作用域-闭包-js编译原理/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="作用域  几乎所有的编程语言最基本的功能，储存变量中的值，并且之后对这个值进行访问和修改，这些值存在哪里，我们如何获取他们？这些问题说明我们需要设计一套良好的规则来储存变量，并且之后可以方便地找到这些变量，这些规则我们称作“作用域” javascript 运行原理  javaScript本质上是一种解释型语言，与编译型语言不同的是它需要一遍执行一边解析，而编译型语言在执行时已经完成编译，可直接执行">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://static.cnodejs.org/FhKw46OcBhzAeyUk2mkf0hj8GsKK">
+<meta property="og:image" content="http://yoursite.com/2018/11/26/作用域-闭包-js编译原理/task1.png">
+<meta property="og:image" content="http://yoursite.com/2018/11/26/作用域-闭包-js编译原理/task2.png">
+<meta property="og:image" content="http://yoursite.com/2018/11/26/作用域-闭包-js编译原理/task2.png">
+<meta property="og:updated_time" content="2019-02-28T02:49:02.116Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="作用域">
+<meta name="twitter:description" content="作用域  几乎所有的编程语言最基本的功能，储存变量中的值，并且之后对这个值进行访问和修改，这些值存在哪里，我们如何获取他们？这些问题说明我们需要设计一套良好的规则来储存变量，并且之后可以方便地找到这些变量，这些规则我们称作“作用域” javascript 运行原理  javaScript本质上是一种解释型语言，与编译型语言不同的是它需要一遍执行一边解析，而编译型语言在执行时已经完成编译，可直接执行">
+<meta name="twitter:image" content="http://static.cnodejs.org/FhKw46OcBhzAeyUk2mkf0hj8GsKK">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/11/26/作用域-闭包-js编译原理/"/>
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>作用域 | Hexo</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br/>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br/>Archives</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/26/作用域-闭包-js编译原理/"/>
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="李英奇"/>
+      <meta itemprop="description" content="李英奇的博客"/>
+      <meta itemprop="image" content="/images/avatar.gif"/>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo"/>
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">作用域
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-11-26 17:46:42" itemprop="dateCreated datePublished" datetime="2018-11-26T17:46:42+08:00">2018-11-26</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-02-28 10:49:02" itemprop="dateModified" datetime="2019-02-28T10:49:02+08:00">2019-02-28</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">Comments: </span>
+                <a href="/2018/11/26/作用域-闭包-js编译原理/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/11/26/作用域-闭包-js编译原理/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h2><p>  几乎所有的编程语言最基本的功能，储存变量中的值，并且之后对这个值进行访问和修改，这些值存在哪里，我们如何获取他们？这些问题说明我们需要设计一套良好的规则来储存变量，并且之后可以方便地找到这些变量，这些规则我们称作“作用域”</p>
+<h2 id="javascript-运行原理"><a href="#javascript-运行原理" class="headerlink" title="javascript 运行原理"></a>javascript 运行原理</h2><p>  javaScript本质上是一种解释型语言，与编译型语言不同的是它需要一遍执行一边解析，而编译型语言在执行时已经完成编译，可直接执行，有更快的执行速度</p>
+<p> 解析性语言： 边解释边执行<br>  源代码===&gt; 抽象语法树 ===&gt;解析器解析和执行<br> 编译性语言：先编译在执行<br>  源代码===&gt; 抽象语法树 ===》中间表示形式 ===》本地代码</p>
+<p>JavaScript语言是解释型语言，为了提高性能，引入了Java虚拟机和C++编译器中的众多技术。现在JavaScript引擎的执行过程大致是：</p>
+<p>　　源代码-→抽象语法树-→字节码-→JIT（just in time 即时编译）-→本地代码（v8没有中间字节码）<br>V8更加直接的将抽象语法树通过JIT技术转换成本地代码，放弃了在字节码阶段可以进行的一些性能优化，但保证了执行速度。<br>　　但是在2017年4月底，v8 的 5.9 版本发布了，新增了一个 Ignition 字节码解释器，将默认启动，从此之后将与JSCore有大致相同的流程。做出这一改<br>  变的原因为：（主要动机）减轻机器码占用的内存空间，即牺牲时间换空间；提高代码的启动速度<br> 　　因为之前 v8 选择了直接将 JS 代码编译到机器代码执行，机器码的执行性能已经非常之高，而这次引入字节码则是选择编译 JS </p>
+<p>  代码到一个中间态的字节码，执行时是解释执行，性能是低于机器代码的。最终的性能测试势必会降低，而不是提高。那么 V8 为什么要做这样一个退步的选择呢？为 V8 引入字节码的动机又是什么呢？笔者总结下来有三条：<br>      –（主要动机）减轻机器码占用的内存空间，即牺牲时间换空间<br>      –  提高代码的启动速度<br>      – 对 v8 的代码进行重构，降低 v8 的代码复杂度<br>  　　故事得从 Chrome 的一个 bug 说起： <a href="http://crbug.com/593477" target="_blank" rel="noopener">http://crbug.com/593477</a> 。Bug 的报告人发现，当在 Chrome 51 (canary) 浏览器下加载、退出、重新加载 facebook 多次，并打开 about:tracing 里的各项监控开关，可以发现第一次加载时 v8.CompileScript 花费了 165 ms，再次加载加入 V8.ParseLazy 居然依然花费了 376 ms。按说如果 Facebook 网站的 js 脚本没有变，Chrome 的缓存功能应该缓存了对 js 脚本的解析结果，不该花费这么久。这是为什么呢？这就是之前 v8 将 JS 代码编译成机器码所带来的问题。因为机器码占空间很大，v8 没有办法把 Facebook 的所有 js ,代码编译成机器码缓存下来，因为这样不仅缓存占用的内存、磁盘空间很大，而且退出 Chrome，再打开时序列化、反序列化缓存所花费的时间也很长，时间、空间成本都接受不了。所以 v8 退而求其次，只编译最外层的 js代码，也就是下图这个例子里面绿色的部分。那么内部的代码（如下图中的黄色、红色的部分）是什么时候编译的呢？v8推迟到第一次被调用的时候再编译。这时间上的推移还导致另外一个短板，就是代码必须被解析多次——绿色的代码一次、黄色的代码再解析一次（当 new Person 被调用）、红色的代码再解析一次（当 doWork() 被调用）。因此，如果你的 js 代码的闭包套了 n 层，那么最终他们至少会被 v8 解析 n 次。<br>    <img src="http://static.cnodejs.org/FhKw46OcBhzAeyUk2mkf0hj8GsKK" alt="Image text"><br>     Facebook 的网站之所以收到这个设计带来的负面的性能影响，就是因为他们的前段工程流程中最后把各个独立的 module<br>   编译成了一个单独的文件，其中用到了很多闭包<br>   刚才提到了机器码占空间大的一个坏处，就是不能一次性编译全部的代码。机器码占空间大还有另外一个坏处，就是一些只运行一次的代码浪费了宝贵的内存<br>   资源。正如上面 Facebook 中的 __d() 系列函数，他们的作用可能只是注册、初始化各个模块组件，而一旦初始化完成便不会再执行。但由于机器码占空间大，这些只执行一次的代码也会在内存中长期存在、长期占用空间。<br>   而引入字节码之后(进行代码优化)，占空间的问题就可以得到缓解。通过恰当地设计字节码的编码方式，字节码可以做到比机器码紧凑很多。V8 引入Ignition 字节码后，代码的内存占用确实降低了；</p>
+<h3 id="预编译"><a href="#预编译" class="headerlink" title="预编译"></a>预编译</h3><p>  javascript引擎主要负责整个javascript程序编译及执行过程；<br>作用域：引擎的一个好朋友，负责收集和维护所有声明的标识符，组成的一系列查询，并实施一套非常严格的规则，确定当前代码对这些标识符的访问权限；</p>
+<h4 id="总的来说：js运行"><a href="#总的来说：js运行" class="headerlink" title="总的来说：js运行"></a>总的来说：js运行</h4><p>   词法分析 语法分析（AST）,预编译，解析执行</p>
+<p>语法分析和预编译发生在解析执行之前；<br>      1.词法分析：将字符组成的字符串分解成（对编程语言来说有意义）的代码块，这些代码块称为词法单元<br>      2.语法分析：这个过程将词法单元流转换成一个由元素逐级嵌套组成的代表了js程序语法的结构的树</p>
+<h4 id="预编译分类："><a href="#预编译分类：" class="headerlink" title="预编译分类："></a>预编译分类：</h4><p>全局预编译：脚本代码块script执行前,查找全局变量声明（包括隐式全局变量声明,省略var声明变量名作全局对象的属性,值为undefined<br>函数预编译：<br>  预编译(函数执行前)※<br>    1.创建AO对象（Active Object）<br>    2.查找函数形参及函数内变量声明，形参名及变量名作为AO对象的属性，值为undefined<br>    3.实参形参相统一，实参值赋给形参<br>    4.查找函数声明，函数名作为AO对象的属性，值为函数引用<br>解析执行：解析执行编译好的机械码（预编译阶段将抽象语法树转为中间字节码通过jit转为机械码）</p>
+<p>举例：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    var a = 1;// 变量声明</span><br><span class="line">    <span class="keyword">function</span> b(y)&#123;//函数声明</span><br><span class="line">        var x = 1;</span><br><span class="line">        console.log(<span class="string">'so easy'</span>);</span><br><span class="line">    &#125;;</span><br><span class="line">    var c = <span class="function"><span class="title">function</span></span>()&#123;//是变量声明而不是函数声明！！</span><br><span class="line">        //...</span><br><span class="line">    &#125;</span><br><span class="line">    b(100);</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    var d = 0;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
+<p>看看javascript引擎对这段代码做了什么？<br>  1.页面产生便创建了GO全局对象（Global Object）（也就是大家熟悉的window对象）<br>  2.第一个脚本文件加载<br>  3.脚本加载完毕后，分析语法是否合法<br>  4.开始预编译<br>  5.查找变量声明，作为GO属性，值赋予undefined<br>  6.查找函数声明，作为GO属性，值赋予函数体</p>
+<p>伪代码：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">GO/window = &#123;</span><br><span class="line">    //页面加载创建GO同时，创建了document、navigator、screen等等属性，此处省略</span><br><span class="line">    a: undefined,</span><br><span class="line">    c: undefined，</span><br><span class="line">    b: <span class="keyword">function</span>(y)&#123;</span><br><span class="line">        var x = 1;</span><br><span class="line">        console.log(<span class="string">'so easy'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>执行函数b之前，发生预编译<br>  创建AO活动对象（Active Object）<br>  查找形参和变量声明，值赋予undefined<br>  实参值赋给形参<br>  查找函数声明，值赋予函数体</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">AO = &#123;</span><br><span class="line">    //创建AO同时，创建了arguments等等属性，此处省略</span><br><span class="line">    y: 100,</span><br><span class="line">    x: undefined</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>javascript解释执行函数中代码<br>  第一个脚本文件执行完毕，加载第二个脚本文件<br>  第二个脚本文件加载完毕后，进行语法分析<br>  语法分析完毕，开始预编译<br>  重复最开始的预编译步骤…</p>
+<h2 id="执行环境及作用域"><a href="#执行环境及作用域" class="headerlink" title="执行环境及作用域"></a>执行环境及作用域</h2><p>执行环境（有时也称为环境）也被尘称为执行期上下文:执行环境定义了变量和函数并提供了执行他们的环境，每个执行环境都有一个与之关联的变量对象，环境中的变量对象和函数都保存在这个对象中；<br>全局执行环境：宿主环境不同表示的执行对象也不同，游览器中window;<br>函数执行环境：当执行流进入一个函数时，函数环境被推入一个环境栈中，而在这个函数执行之后，栈将其弹出；</p>
+<p>销毁：某个执行环境中的代码和方法执行完之后，改环境被销毁，保存在其中所有变量和函数定义也都被随之销毁（全局执行环境直到应用退去才被销毁）</p>
+<p>大白话：<br>  当函数执行时，会创建一个执行期上下文的内部对象，一个执行期上下文定义了一个函数执行时的环境，函数每次执行时定义的执行期上下文都是不一样的；当函数执行完毕，他所产生的执行期上下文销毁；</p>
+<h3 id="作用域链："><a href="#作用域链：" class="headerlink" title="作用域链："></a>作用域链：</h3><p>  函数内部的[[scope]]属性：在我们创建函数时就会生成这样的一个属性，这个属性保存着这个函数的父作用域的作用域链；在函数执行时，函数会生成一个活动对象（执行期上下文）放到[[scope]]最前端，[[scope]]属性中存在的执行期上下文集合，就是我们常说的作用域链；<br>  当代码在一个环境中执行时，会创建变量（函数）对象的一个作用域链(scope chain);作用域链的用途，是创建的函数保证对执行环境中变量和函数有序的访问；<br>    活动对象：作用域的最前端，是当前执行函数所在的执行环境，将其活动对象（activation object）作为变量的对象；<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">// sort 比较函数</span><br><span class="line"><span class="keyword">function</span> compare(value1, value2) &#123;</span><br><span class="line">  <span class="keyword">if</span> (value1 &lt; value2) &#123;</span><br><span class="line">    <span class="built_in">return</span> -1;</span><br><span class="line"></span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (value1 &gt; value2) &#123;</span><br><span class="line">    <span class="built_in">return</span> 1;</span><br><span class="line"></span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="built_in">return</span> 0</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">compare(5, 10);</span><br></pre></td></tr></table></figure></p>
+<p>后台的每一个执行环境都有一个表示变量的对象—变量对象、全局环境的变量对象始终存在，像compare()，函数这样局部环境变量对象只在函数执行过程中存在。<br>  创建compare()函数的时候，会创建一个预先包含全局变量对象（global|| window）的作用域链，这个对象被保存在函数内部的[[scope]]属性中；(<br>    发生在预编译阶段)<br>    执行compare()函数的时候，会为函数创建一个执行环境，然后通过复制[[scope]]属性中的对象构建起执行环境的作用域链；（发什么在解析执行阶段）<br>  此后又有一个活动对象被创建，被推入执行队列的最前端</p>
+<h2 id="垃圾回收机制"><a href="#垃圾回收机制" class="headerlink" title="垃圾回收机制"></a>垃圾回收机制</h2><p>javascript具有自动回收垃圾机制的，也就是说，执行环境会负责管理代码执行过程中使用的内存，而在c和c++之类的语言中，开发人员一项基本任务是手动的跟踪内存的使用情况，这也是造成许多问题的根源。在编写javascript程序时，开发人员不用在担心内存的使用哪个问题，所需内存的分配以及无用内存的回收完全实现了自动管理。这种垃圾回收机制很简单：找出那些不在继续使用的变量，然后释放其占用的内存，为此垃圾回收器会按照固定的时间间隔（或者代码执行中预定的收集时间）周期性的执行这一个操作。<br>局部变量的生命周期，局部变量只有在函数执行的过程中存在，在这个过程中，会为局部变量在栈或者堆内存上分配相应的空间，一遍储存他们的值。然后在函数中使用这些变量，直到函数执行结束。此时局部变量没有存在的必要了，因此可以释放他们的内存以供将来使用；<br>全局变量的生命周期直到游览器卸载页面才会结束；</p>
+<h3 id="标记清除"><a href="#标记清除" class="headerlink" title="标记清除"></a>标记清除</h3><p>  这是javascript中最常用的垃圾回收方式。当变量进入执行环境是，就标记这个变量为“进入环境”。从逻辑上讲，永远不能释放进入环境的变量所占用的内存，因为只要执行流进入相应的环境，就可能会用到他们。当变量离开环境时，则将其标记为“离开环境”。垃圾收集器在运行的时候会给存储在内存中的所有变量都加上标记。然后，它会去掉环境中的变量以及被环境中的变量引用的标记。而在此之后再被加上标记的变量将被视为准备删除的变量，原因是环境中的变量已经无法访问到这些变量了。最后。垃圾收集器完成内存清除工作，销毁那些带标记的值，并回收他们所占用的内存空间；</p>
+<p>举例：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var a = 3;</span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">b</span></span>() &#123;</span><br><span class="line">  var c = 7;</span><br><span class="line">&#125;</span><br><span class="line">b();</span><br></pre></td></tr></table></figure>
+<p>预编译之后解析执行：<br>  函数执行时启动垃圾回收机制，将c标记为进入环境，执行完之后将其标记为离开环境；这中间，垃圾收集器在运行的时候会给存储在内存中的所有变量都加上标记。然后，它会去掉环境中的变量以及被环境中的变量引用的标记。而在此之后再被加上标记的变量将被视为准备删除的变量；闭包函数的生命周期还没有结束；</p>
+<h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><p>  闭包是指有权访问另一个函数作用域中变量的函数，创建闭包的常用方式，就是在函数内部，创建另一个函数；来自===》高级程序设计</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">foo</span></span>() &#123;</span><br><span class="line">  var a = 2;</span><br><span class="line">  <span class="keyword">function</span> <span class="function"><span class="title">bar</span></span>() &#123;</span><br><span class="line">    console.log(<span class="string">'a'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  bar();</span><br><span class="line">&#125;</span><br><span class="line">foo();</span><br></pre></td></tr></table></figure>
+<p>上面也可以说是闭包；但是不是很明显，bar中对a的引用是作用域的查找规则；</p>
+<p>我查阅你不知道的javascript和高级程序设计总结出自己理解的闭包：<br>  1.函数嵌套函数<br>  2.函数中有对另一个函数作用域中变量的引用<br>  3.原有作用域链不被销毁，垃圾回收机制不能进行回收</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">foo</span></span>() &#123;</span><br><span class="line">  var a = 2;</span><br><span class="line">  <span class="keyword">function</span> <span class="function"><span class="title">b</span></span>() &#123;</span><br><span class="line">    console.log(<span class="string">'a'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">return</span> b;</span><br><span class="line">&#125;</span><br><span class="line">var <span class="built_in">limit</span> = foo();</span><br><span class="line"><span class="built_in">limit</span>();</span><br></pre></td></tr></table></figure>
+<p>当定义foo时将全局执行环境对象复制到了foo函数的[[scope]]属性中；<br>执行foo时创建foo的活动对象放到[[scope]]的最前端<br>定义b函数时，复制foo函数的[[scope]]放到b函数的[[scope]]属性中；<br>正常当foo函数执行完之后，我们常常期望，foo的整个内部作用域被销毁，因为我们知道引擎有垃圾回收器用来释放不在使用的内存空间。但是在我们这个例子中作用域依然存在，执行limit()输出为2；谁在使用这个内部作用域？<br>  拜b()所声明的位置决定，他拥有富含foo()内部作用域的闭包（引用），使得改作用域一直存活；以供b()在之后任何位置引用，b()依然持有该作用于的引用，这个引用称作闭包；<br>高级程序设计有很好的图；180页；</p>
+<p>常见闭包问题：<br>定时器闭包</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="built_in">wait</span>(message) &#123;</span><br><span class="line">  setTimeout(<span class="keyword">function</span> <span class="function"><span class="title">timer</span></span>() &#123;</span><br><span class="line">    console.log(<span class="string">'message'</span>)</span><br><span class="line">  &#125;, 1000)</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">wait</span>(<span class="string">'hello closure'</span>);</span><br></pre></td></tr></table></figure>
+<p>将一个内部函数timer函数传递給setTimeout(),timer具有蕴含wait作用域的引用（闭包);wait()执行完之后期作用域没有消失，1秒后执行timer,timer执行完之后销毁执行期上下文；（这里涉及到执行队列，异步相关知识，之后总结）;<br>所以少用setTimeInterval()，他会一直执行，导致作用域链不被释放；<br>闭包有很多应用：在定时器，事件监听器，ajax请求，跨窗口通信，使用回调函数，就是在使用闭包；</p>
+<p>循环和闭包<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(var i=1;i&lt;=5;i++) &#123;</span><br><span class="line">  setTimeout(<span class="keyword">function</span> <span class="function"><span class="title">timer</span></span>() &#123;</span><br><span class="line">    console.log(i);</span><br><span class="line">  &#125;, i*1000);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>我们期望输出,1,2,3,4,5，但是他输出的是5个6；为什么呢？<br>循环总是先结束的，即使时间间隔为0;循环结束之后全局变量i；变为6；执行异步代码执行timer，创建执行期上下文，引擎根据查找规则找，沿着作用域链进行查找，执行期上下文对象里面没有，向全局作用域查找,此时全局i变为6；输出为6；</p>
+<p>怎么能得到预期的结果呢？<br>缺陷：假设循环中的每个迭代在运行时候都会给自己捕获一个i的副本。但是根据作用域的工作原理，实际情况是尽管循环中五个函数是在各个迭代中分别定义的，但是他们被封闭在一个共享的全局作用域中，实际上只有一个i；<br>如果我们通过在外层增加一个函数，将timer封装在函数作用域中，通过引用函数执行期上下文中的j(j=i)，不就好了吗？</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(var i=1;i&lt;=5;i++) &#123;</span><br><span class="line">  (<span class="keyword">function</span>(j)&#123;</span><br><span class="line">    setTimeout(<span class="keyword">function</span> <span class="function"><span class="title">timer</span></span>() &#123;</span><br><span class="line">      console.log(j);</span><br><span class="line">    &#125;, j*1000)</span><br><span class="line">  &#125;)(i)</span><br><span class="line">&#125;</span><br><span class="line">// 输出 1，2，3，4，5</span><br></pre></td></tr></table></figure>
+<p>立即执行函数，会为某个迭代生成一个新的作用域，我们可以引用新的作用域的值；</p>
+<p>我们使用立即执行函数时每次迭代时候会创建一个新的作用域，换句话说每次迭代都需要一个块级作用域；es6提出块作用域，与之相关的变量声明，let,const；</p>
+<h2 id="let"><a href="#let" class="headerlink" title="let"></a>let</h2><p>  let关键字可以将《变量》绑定到所在的任意作用域中（通常是{….}内部），换句话说，let为其声明的变量隐试地劫持了所在的块作用域；<br>隐式块作用域,函数不可隐式的劫持块作用域；<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">if</span></span>() &#123;</span><br><span class="line"> <span class="built_in">let</span> a = 3;</span><br><span class="line">&#125; </span><br><span class="line"><span class="function"><span class="title">for</span></span>() &#123;</span><br><span class="line"> <span class="built_in">let</span> a = 3;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>通过打断点，当let显示，或者隐式绑定块作用域时，当执行块中的代码时，会在作用域链的前端加上Block的活动对象这个活动对象里面只包含，在块中let声明的变量，当执行完代码块中的代码时，垃圾回收机制释放Block执行上下文的内存；这也是，在别的作用域中访问不到，let声明的变量的值原因；<br>可以显示的定义块作用域,显示的加上{};<br>当执行函数d时候，会产生执行期上下文图中scope下面的local对象，local里面有let定义的d变量，f变量，如果块作用域中，有var，函数声明的话都提到local中；</p>
+<p><img src="/2018/11/26/作用域-闭包-js编译原理/task1.png" alt="Image text"></p>
+<p>如图：当js引擎执行到代码块中时，会在[[scope]]属性的最前端加上Block的作用域（执行期上下文），这个对象中只包含let和const声明的变量；</p>
+<p><img src="/2018/11/26/作用域-闭包-js编译原理/task2.png" alt="Image text"></p>
+<p>如图：当代码块中代码执行完之后，活动对象会被垃圾回收器回收；</p>
+<p><img src="/2018/11/26/作用域-闭包-js编译原理/task2.png" alt="Image text"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">for(var i=1;i&lt;=5;i++) &#123;</span><br><span class="line">  &#123;</span><br><span class="line">    let j = i;</span><br><span class="line">    setTimeout(function timer() &#123;</span><br><span class="line">      console.log(j);</span><br><span class="line">    &#125;, i*1000)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>let将j变量显示的绑定到了块级作用域上，每一次迭代生成新的块级作用域，相当于上面的立即执行函数方法；在全局与函数作用域之间加上一个块级作用域，timer回调函数被Block执行环境所包裹，每一次都取不同的变量j;得到预期的结果；<br>改进：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="built_in">let</span> i=1;i&lt;=5;i++) &#123;</span><br><span class="line">  setTimeout(<span class="keyword">function</span> <span class="function"><span class="title">timer</span></span>() &#123;</span><br><span class="line">    console.log(i);</span><br><span class="line">  &#125;, i*1000)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>for循环中(){}块级作用域是父子关系；for循环中的let声明，有一个特殊的行为，这个行为指出变量在循环过程中不止声明一次，随后的每个迭代都会使用上一次迭代结束的值初始化这个变量；每次迭代let将i绑定到新的块级作用域上，timer中的i访问Block中的i，得到预期的结果（看不懂断点），使用这种方式避免了全局污染，并且，timer中的代码执行完，将释放掉leti绑定的块级作用域的空间（垃圾回收）</p>
+<p>块级作用域和let的关系：<br>  通过let,const将变量绑定到块级作用域；</p>
+<p>总结：<br>  1.let 声明的变量，不存在变量提升，比较好控制<br>  2.let 声明的变量，存在暂时性死区，绑定变量于相应块级作用域内、外部相同变量的声明无法修 改作用域内变量<br>  3.let 声明的变量，在相同作用域内，不允许重复声明<br>  4.垃圾收集，如上例子，执行完timer之后，立即释放它的父块级作用域；</p>
+<p>还有一些其他的代码模式利用了闭包强大的威力，之后我会用一些篇幅来研究其中最强大的一块：模块；</p>
+<p>参考：<br>  你不知道的javascript;<br>  高级程序设计<br>  JS 引擎与字节码的不解之缘: <a href="https://cnodejs.org/topic/59084a9cbbaf2f3f569be482" target="_blank" rel="noopener">网址</a><br>  v8引擎详解: <a href="https://blog.csdn.net/swimming_in_it_/article/details/78869549" target="_blank" rel="noopener">网址</a></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/闭包-作用域链-javascript编译原理/" rel="tag"># 闭包 作用域链 javascript编译原理</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/11/22/模块话/" rel="next" title="模块话">
+                <i class="fa fa-chevron-left"></i> 模块话
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/12/02/mongodb-mongoose/" rel="prev" title="mongodb mongoose">
+                mongodb mongoose <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">李英奇</p>
+              <p class="site-description motion-element" itemprop="description">李英奇的博客</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">20</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">13</span>
+                    <span class="site-state-item-name">tags</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#作用域"><span class="nav-number">1.</span> <span class="nav-text">作用域</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#javascript-运行原理"><span class="nav-number">2.</span> <span class="nav-text">javascript 运行原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#预编译"><span class="nav-number">2.1.</span> <span class="nav-text">预编译</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#总的来说：js运行"><span class="nav-number">2.1.1.</span> <span class="nav-text">总的来说：js运行</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#预编译分类："><span class="nav-number">2.1.2.</span> <span class="nav-text">预编译分类：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#执行环境及作用域"><span class="nav-number">3.</span> <span class="nav-text">执行环境及作用域</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#作用域链："><span class="nav-number">3.1.</span> <span class="nav-text">作用域链：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#垃圾回收机制"><span class="nav-number">4.</span> <span class="nav-text">垃圾回收机制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#标记清除"><span class="nav-number">4.1.</span> <span class="nav-text">标记清除</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#闭包"><span class="nav-number">5.</span> <span class="nav-text">闭包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#let"><span class="nav-number">6.</span> <span class="nav-text">let</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">李英奇</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.0.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.0"></script>
+
+  <script src="/js/src/motion.js?v=7.0.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/schemes/muse.js?v=7.0.0"></script>
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.0"></script>
+<script src="/js/src/post-details.js?v=7.0.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=7.0.0"></script>
+
+
+  
+  
+  
+
+<script src="//cdn1.lncld.net/static/js/3.11.1/av-min.js"></script>
+
+
+
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+<script>
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: false,
+    notify: false,
+    appId: 'iniTISa2YMNIdqFT99GrBua1-gzGzoHsz',
+    appKey: 'yXIUo5ajDuxW9qX9ixHIKIeI# your leancloud application appkey',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+</script>
+
+
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
