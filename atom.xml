@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Hexo</title>
+  <title>行酒令</title>
   
-  
+  <subtitle>十步杀一人，千里不留行</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://liyingqi1.com/"/>
