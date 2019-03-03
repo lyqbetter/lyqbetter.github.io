@@ -55,27 +55,6 @@
   </entry>
   
   <entry>
-    <title>前端模块化</title>
-    <link href="https://liyingqi1.com/2019/02/26/%E5%89%8D%E7%AB%AF%E6%A8%A1%E5%9D%97%E5%8C%96/"/>
-    <id>https://liyingqi1.com/2019/02/26/前端模块化/</id>
-    <published>2019-02-26T06:05:36.000Z</published>
-    <updated>2019-02-26T09:02:52.073Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;/assets/css/APlayer.min.css&quot;&gt;&lt;script src=&quot;/assets/js/APlayer.min.js&quot; cla
-      
-    
-    </summary>
-    
-    
-      <category term="AMD / CMD / es6模块化" scheme="https://liyingqi1.com/tags/AMD-CMD-es6%E6%A8%A1%E5%9D%97%E5%8C%96/"/>
-    
-  </entry>
-  
-  <entry>
     <title>webpack打包原理</title>
     <link href="https://liyingqi1.com/2019/02/26/webpack%E6%89%93%E5%8C%85%E5%8E%9F%E7%90%86/"/>
     <id>https://liyingqi1.com/2019/02/26/webpack打包原理/</id>
@@ -91,6 +70,27 @@
     
     </summary>
     
+    
+  </entry>
+  
+  <entry>
+    <title>前端模块化</title>
+    <link href="https://liyingqi1.com/2019/01/08/%E5%89%8D%E7%AB%AF%E6%A8%A1%E5%9D%97%E5%8C%96/"/>
+    <id>https://liyingqi1.com/2019/01/08/前端模块化/</id>
+    <published>2019-01-08T06:05:36.000Z</published>
+    <updated>2019-03-03T16:12:42.049Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;/assets/css/APlayer.min.css&quot;&gt;&lt;script src=&quot;/assets/js/APlayer.min.js&quot; cla
+      
+    
+    </summary>
+    
+    
+      <category term="AMD CMD es6模块化" scheme="https://liyingqi1.com/tags/AMD-CMD-es6%E6%A8%A1%E5%9D%97%E5%8C%96/"/>
     
   </entry>
   
@@ -173,25 +173,6 @@
     
     
       <category term="闭包 作用域链 javascript编译原理" scheme="https://liyingqi1.com/tags/%E9%97%AD%E5%8C%85-%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE-javascript%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>模块话</title>
-    <link href="https://liyingqi1.com/2018/11/22/%E6%A8%A1%E5%9D%97%E8%AF%9D/"/>
-    <id>https://liyingqi1.com/2018/11/22/模块话/</id>
-    <published>2018-11-22T12:37:26.000Z</published>
-    <updated>2018-11-22T12:37:26.465Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;/assets/css/APlayer.min.css&quot;&gt;&lt;script src=&quot;/assets/js/APlayer.min.js&quot; cla
-      
-    
-    </summary>
-    
     
   </entry>
   

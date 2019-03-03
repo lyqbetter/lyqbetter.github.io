@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://liyingqi1.com/2019/01/08/%E5%89%8D%E7%AB%AF%E6%A8%A1%E5%9D%97%E5%8C%96/</loc>
+    <lastmod>2019-03-03</lastmod>
+  </url>  <url>
     <loc>https://liyingqi1.com/2018/11/09/Array-%E6%95%B0%E7%BB%84/</loc>
     <lastmod>2019-02-28</lastmod>
   </url>  <url>
@@ -14,9 +17,6 @@
     <lastmod>2019-02-26</lastmod>
   </url>  <url>
     <loc>https://liyingqi1.com/2019/02/26/%E6%B8%B8%E8%A7%88%E5%99%A8%E7%BB%93%E6%9E%84/</loc>
-    <lastmod>2019-02-26</lastmod>
-  </url>  <url>
-    <loc>https://liyingqi1.com/2019/02/26/%E5%89%8D%E7%AB%AF%E6%A8%A1%E5%9D%97%E5%8C%96/</loc>
     <lastmod>2019-02-26</lastmod>
   </url>  <url>
     <loc>https://liyingqi1.com/2019/02/26/webpack%E6%89%93%E5%8C%85%E5%8E%9F%E7%90%86/</loc>
@@ -33,9 +33,6 @@
   </url>  <url>
     <loc>https://liyingqi1.com/2018/12/02/mongodb-mongoose/</loc>
     <lastmod>2018-12-02</lastmod>
-  </url>  <url>
-    <loc>https://liyingqi1.com/2018/11/22/%E6%A8%A1%E5%9D%97%E8%AF%9D/</loc>
-    <lastmod>2018-11-22</lastmod>
   </url>  <url>
     <loc>https://liyingqi1.com/2018/11/22/redux/</loc>
     <lastmod>2018-11-22</lastmod>
