@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://liyingqi1.com/"/>
-  <updated>2019-02-26T09:47:43.725Z</updated>
+  <updated>2019-03-10T06:58:24.564Z</updated>
   <id>https://liyingqi1.com/</id>
   
   <author>
@@ -15,6 +15,73 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>viewport</title>
+    <link href="https://liyingqi1.com/2019/03/10/viewport/"/>
+    <id>https://liyingqi1.com/2019/03/10/viewport/</id>
+    <published>2019-03-10T05:57:05.000Z</published>
+    <updated>2019-03-10T06:58:24.564Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;/assets/css/APlayer.min.css&quot;&gt;&lt;script src=&quot;/assets/js/APlayer.min.js&quot; cla
+      
+    
+    </summary>
+    
+      <category term="移动端" scheme="https://liyingqi1.com/categories/%E7%A7%BB%E5%8A%A8%E7%AB%AF/"/>
+    
+    
+      <category term="viewport" scheme="https://liyingqi1.com/tags/viewport/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>css像素问题</title>
+    <link href="https://liyingqi1.com/2019/03/10/css%E5%83%8F%E7%B4%A0%E9%97%AE%E9%A2%98/"/>
+    <id>https://liyingqi1.com/2019/03/10/css像素问题/</id>
+    <published>2019-03-10T01:27:06.000Z</published>
+    <updated>2019-03-10T06:58:04.212Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;/assets/css/APlayer.min.css&quot;&gt;&lt;script src=&quot;/assets/js/APlayer.min.js&quot; cla
+      
+    
+    </summary>
+    
+      <category term="移动端" scheme="https://liyingqi1.com/categories/%E7%A7%BB%E5%8A%A8%E7%AB%AF/"/>
+    
+    
+      <category term="px 物理像素 逻辑像素 设备像素比 ppi viewport" scheme="https://liyingqi1.com/tags/px-%E7%89%A9%E7%90%86%E5%83%8F%E7%B4%A0-%E9%80%BB%E8%BE%91%E5%83%8F%E7%B4%A0-%E8%AE%BE%E5%A4%87%E5%83%8F%E7%B4%A0%E6%AF%94-ppi-viewport/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>异步加载js文件</title>
+    <link href="https://liyingqi1.com/2019/03/09/%E5%BC%82%E6%AD%A5%E5%8A%A0%E8%BD%BDjs%E6%96%87%E4%BB%B6/"/>
+    <id>https://liyingqi1.com/2019/03/09/异步加载js文件/</id>
+    <published>2019-03-09T03:49:38.000Z</published>
+    <updated>2019-03-09T13:58:06.685Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;/assets/css/APlayer.min.css&quot;&gt;&lt;script src=&quot;/assets/js/APlayer.min.js&quot; cla
+      
+    
+    </summary>
+    
+    
+      <category term="WebWorker async defer webService" scheme="https://liyingqi1.com/tags/WebWorker-async-defer-webService/"/>
+    
+  </entry>
   
   <entry>
     <title>原型链</title>
@@ -78,7 +145,7 @@
     <link href="https://liyingqi1.com/2019/01/08/%E5%89%8D%E7%AB%AF%E6%A8%A1%E5%9D%97%E5%8C%96/"/>
     <id>https://liyingqi1.com/2019/01/08/前端模块化/</id>
     <published>2019-01-08T06:05:36.000Z</published>
-    <updated>2019-03-03T16:12:42.049Z</updated>
+    <updated>2019-03-04T05:12:27.905Z</updated>
     
     <summary type="html">
     
@@ -362,46 +429,6 @@
     
     
       <category term="frameset iframe frame" scheme="https://liyingqi1.com/tags/frameset-iframe-frame/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="https://liyingqi1.com/2018/09/08/hexo%E5%91%BD%E4%BB%A4%E8%A1%8C/"/>
-    <id>https://liyingqi1.com/2018/09/08/hexo命令行/</id>
-    <published>2018-09-08T11:14:16.238Z</published>
-    <updated>2019-02-27T02:58:40.498Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;/assets/css/APlayer.min.css&quot;&gt;&lt;script src=&quot;/assets/js/APlayer.min.js&quot; cla
-      
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>长列表性能优化</title>
-    <link href="https://liyingqi1.com/2018/07/02/%E9%95%BF%E5%88%97%E8%A1%A8%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/"/>
-    <id>https://liyingqi1.com/2018/07/02/长列表性能优化/</id>
-    <published>2018-07-02T14:14:34.000Z</published>
-    <updated>2018-11-04T09:31:45.804Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;/assets/css/APlayer.min.css&quot;&gt;&lt;script src=&quot;/assets/js/APlayer.min.js&quot; cla
-      
-    
-    </summary>
-    
-    
-      <category term="web优化 长列表" scheme="https://liyingqi1.com/tags/web%E4%BC%98%E5%8C%96-%E9%95%BF%E5%88%97%E8%A1%A8/"/>
     
   </entry>
   

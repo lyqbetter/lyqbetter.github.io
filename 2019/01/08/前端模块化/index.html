@@ -114,7 +114,7 @@
 <meta property="og:site_name" content="行酒令">
 <meta property="og:description" content="前端模块化什么是前端模块化？模块化在任何开发中都是必不可少，但是早起前端没有强烈模块化的概念，随着web技术不断的发展，前端逻辑越来越复杂，如果没有一种模块化机制来管理一些文件的话，会使程序很复杂；前端的模块化是Node.js带来的新产物，后端开发没有模块化不能进行，随着Node.js的出现，JavaScript开始在后端发挥作用，为了代码重用，模块化变得不可或缺； 模块化的优点 避免变量污染，命">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-03T16:12:42.049Z">
+<meta property="og:updated_time" content="2019-03-04T05:12:27.905Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前端模块化">
 <meta name="twitter:description" content="前端模块化什么是前端模块化？模块化在任何开发中都是必不可少，但是早起前端没有强烈模块化的概念，随着web技术不断的发展，前端逻辑越来越复杂，如果没有一种模块化机制来管理一些文件的话，会使程序很复杂；前端的模块化是Node.js带来的新产物，后端开发没有模块化不能进行，随着Node.js的出现，JavaScript开始在后端发挥作用，为了代码重用，模块化变得不可或缺； 模块化的优点 避免变量污染，命">
@@ -473,7 +473,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-03-04 00:12:42" itemprop="dateModified" datetime="2019-03-04T00:12:42+08:00">2019-03-04</time>
+                <time title="修改时间：2019-03-04 13:12:27" itemprop="dateModified" datetime="2019-03-04T13:12:27+08:00">2019-03-04</time>
               
             
           </span>
@@ -514,7 +514,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">3.2k</span>
+                <span title="本文字数">8.1k</span>
               
 
               
@@ -528,7 +528,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">3 分钟</span>
+                <span title="阅读时长">7 分钟</span>
               
             </div>
           
@@ -574,7 +574,21 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">var myobj = (<span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">  // 私有成员</span><br><span class="line">  var name = <span class="string">'my best teach'</span>;</span><br><span class="line">  // 实现公有部分</span><br><span class="line">  <span class="built_in">return</span> &#123;</span><br><span class="line">    // 特权方法</span><br><span class="line">    <span class="function"><span class="title">getName</span></span>()&#123;</span><br><span class="line">      <span class="built_in">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;)();</span><br><span class="line">myobj.getName(); // 输出<span class="string">'my best teach'</span></span><br></pre></td></tr></table></figure>
 <p>这个例子称为“模块模式的基本框架”</p>
 <h3 id="模块模式"><a href="#模块模式" class="headerlink" title="模块模式"></a>模块模式</h3><p>模块模式就是以下模式组合:<br>（1）命名空间<br>（2）立即执行函数<br>（3）私有和特权成员<br>（4）声明依赖</p>
-
+<h3 id="从CommonJS到ES6"><a href="#从CommonJS到ES6" class="headerlink" title="从CommonJS到ES6"></a>从CommonJS到ES6</h3><p>模块化开发的优点：<br> 定义：把一个复杂的系统分解为一个一个模块。<br>（1）代码复用，让我们更方便的进行代码管理，同时也便于后期代码的修改与维护<br>（2）一个单独的文件就是一个作用域，只向外面暴露特定的函数与变量，避免全局变量污染，减少变量命名冲突；</p>
+<p>js模块化规范有：CommonJS, AMD, CMD;</p>
+<h4 id="CommonJS-规范"><a href="#CommonJS-规范" class="headerlink" title="CommonJS 规范"></a>CommonJS 规范</h4><p>是服务器端模块的规范，由node.js推广使用，该规范的核心思想是；允许模块通过require方法来同步加载所需要的依赖的其他模块；然后通过exports, 和module.exports来导出需要暴露的接口；<br>CommonJS 特点<br>(1) 所有代码都运行在模块作用域，不会污染全局作用域。<br>(2) 模块可以多次加载，但是只会在第一次加载时运行一次，然后运行结果就被缓存了，以后再加载，就直接读取缓存结果。要想让模块再次运行，必须清除缓存。<br>(3) 模块加载的顺序，按照其在代码中出现的顺序。</p>
+<h5 id="module"><a href="#module" class="headerlink" title="module"></a>module</h5><p>每个模块内部，都有一个module对象代表当前模块，他有以下属性<br>index.js<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">console.log(module);</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">node index.js</span><br><span class="line">// 输出对象</span><br><span class="line">Module &#123;</span><br><span class="line">id: <span class="string">'/Users/liyingqi/Desktop/demo/demo2/index2.js'</span>, // 模块的识别符，通常是带有绝对路径的模块文件名</span><br><span class="line">exports: &#123;&#125;, // 表示模块对外输出的值。</span><br><span class="line">parent: //返回一个对象，表示调用该模块的模块</span><br><span class="line"> Module &#123;</span><br><span class="line">   id: <span class="string">'.'</span>,</span><br><span class="line">   exports: &#123;&#125;,</span><br><span class="line">   parent: null,</span><br><span class="line">   filename: <span class="string">'/Users/liyingqi/Desktop/demo/demo2/index.js'</span>,</span><br><span class="line">   loaded: <span class="literal">false</span>, //返回一个布尔值，表示模块是否已经完成加载</span><br><span class="line">   children: [ [Circular] ], //返回一个数组，表示该模块要用到的其他模块</span><br><span class="line">   paths:</span><br><span class="line">    [ <span class="string">'/Users/liyingqi/Desktop/demo/demo2/node_modules'</span>,</span><br><span class="line">      <span class="string">'/Users/liyingqi/Desktop/demo/node_modules'</span>,</span><br><span class="line">      <span class="string">'/Users/liyingqi/Desktop/node_modules'</span>,</span><br><span class="line">      <span class="string">'/Users/liyingqi/node_modules'</span>,</span><br><span class="line">      <span class="string">'/Users/node_modules'</span>,</span><br><span class="line">      <span class="string">'/node_modules'</span> ] &#125;,</span><br><span class="line">filename: <span class="string">'/Users/liyingqi/Desktop/demo/demo2/index2.js'</span>, // 模块的文件名，带有绝对路径</span><br><span class="line">loaded: <span class="literal">false</span>, // </span><br><span class="line">children: [],</span><br><span class="line">paths:</span><br><span class="line"> [ <span class="string">'/Users/liyingqi/Desktop/demo/demo2/node_modules'</span>,</span><br><span class="line">   <span class="string">'/Users/liyingqi/Desktop/demo/node_modules'</span>,</span><br><span class="line">   <span class="string">'/Users/liyingqi/Desktop/node_modules'</span>,</span><br><span class="line">   <span class="string">'/Users/liyingqi/node_modules'</span>,</span><br><span class="line">   <span class="string">'/Users/node_modules'</span>,</span><br><span class="line">   <span class="string">'/node_modules'</span> ] </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>module.exports属性表示当前模块对外输出的接口，其他文件加载该模块，实际上就是读取module.exports变量。<br>为了方便Node为每个模块提供一个exports变量，指向module.exports<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var exports = module.exports;（commonJS隐式做了这个赋值）</span><br></pre></td></tr></table></figure></p>
+<p>这样做的好处，对外输出模块接口时，可以向exports对象添加方法暴露出去,降低属性前缀对性能的损耗</p>
+<h5 id="require命令"><a href="#require命令" class="headerlink" title="require命令"></a>require命令</h5><p>（1）Node使用common.js模块规范，内置的require命令用于加载模块文件，require的基本功能是，读入并且执行一个javascript文件，然后返回该模块的exports对象，如果没有发现指定模块会报错；<br>require加载规则：<br>require命令用于加载文件，后缀名默认为.js。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var foo = require(&apos;foo&apos;);</span><br><span class="line">//  等同于</span><br><span class="line">var foo = require(&apos;foo.js&apos;);</span><br></pre></td></tr></table></figure></p>
+<p>根据参数的不同格式，require命令去不同路径寻找模块文件:<br>(1) 果参数字符串以“/”开头，则表示加载的是一个位于绝对路径的模块文件。比如，require(‘/home/marco/foo.js’)将加载/home/marco/foo.js。<br>（2）如果参数字符串以“./”开头，则表示加载的是一个位于相对路径（跟当前执行脚本的位置相比）的模块文件。比如，require(‘./circle’)将加载当前脚本同一目录的circle.js。绝对路径相对于ROOT<br>（3）如果参数字符串不以“./“或”/“开头，则表示加载的是一个默认提供的核心模块（位于Node的系统安装目录中），或者一个位于各级node_modules目录的已安装模块（全局安装或局部安装）。从上到下依次查找<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">require(&apos;webpack&apos;) // 引用webpack, 从上到下依次查找；</span><br><span class="line"></span><br><span class="line">&apos;/Users/liyingqi/Desktop/demo/demo2/node_modules&apos;,</span><br><span class="line">&apos;/Users/liyingqi/Desktop/demo/node_modules&apos;,</span><br><span class="line">&apos;/Users/liyingqi/Desktop/node_modules&apos;,</span><br><span class="line">&apos;/Users/liyingqi/node_modules&apos;,</span><br><span class="line">&apos;/Users/node_modules&apos;,</span><br><span class="line">&apos;/node_modules&apos; // 全局</span><br></pre></td></tr></table></figure></p>
+<p>（4）如果参数字符串不以“./“或”/“开头，而且是一个路径，比如require(‘example-module/path/to/file’)，则将先找到example-module的位置，然后再以它为参数，找到后续路径。<br>（5）如果指定的模块文件没有发现，Node会尝试为文件名添加.js、.json、.node后，再去搜索。.js件会以文本格式的JavaScript脚本文件解析，.json文件会以JSON格式的文本文件解析，.node文件会以编译后的二进制文件解析。<br>（6）如果想得到require命令加载的确切文件名，使用require.resolve()方法。</p>
+<p>目录的加载规则：<br>  通常，我们会把相关的文件会放在一个目录里面，便于组织。这时，最好为该目录设置一个入口文件，让require方法可以通过这个入口文件，加载根据入口文件的依赖关系记载整个目录；在目录中放置一个package.json文件，并且将入口文件写入main字段<br>当你加载一个npm包时候，require会根据你的入口文件进行加载；</p>
+<p>模块缓存：<br>第一次加载某个模块时，Node会缓存该模块。以后再加载该模块，就直接从缓存取出该模块的module.exports属性。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">&#123; [Function: require]</span><br><span class="line">  resolve: &#123; [Function: resolve] paths: [Function: paths] &#125;,</span><br><span class="line">  main:</span><br><span class="line">   Module &#123;</span><br><span class="line">     id: &apos;.&apos;,</span><br><span class="line">     exports: &#123;&#125;,</span><br><span class="line">     parent: null,</span><br><span class="line">     filename: &apos;/Users/liyingqi/Desktop/demo/demo2/index.js&apos;,</span><br><span class="line">     loaded: false,</span><br><span class="line">     children: [ [Object] ],</span><br><span class="line">     paths:</span><br><span class="line">      [ &apos;/Users/liyingqi/Desktop/demo/demo2/node_modules&apos;,</span><br><span class="line">        &apos;/Users/liyingqi/Desktop/demo/node_modules&apos;,</span><br><span class="line">        &apos;/Users/liyingqi/Desktop/node_modules&apos;,</span><br><span class="line">        &apos;/Users/liyingqi/node_modules&apos;,</span><br><span class="line">        &apos;/Users/node_modules&apos;,</span><br><span class="line">        &apos;/node_modules&apos; ] &#125;,</span><br><span class="line">  extensions: &#123; &apos;.js&apos;: [Function], &apos;.json&apos;: [Function], &apos;.node&apos;: [Function] &#125;,</span><br><span class="line">  cache: //模块缓存</span><br><span class="line">   &#123; &apos;/Users/liyingqi/Desktop/demo/demo2/index.js&apos;:</span><br><span class="line">      Module &#123;</span><br><span class="line">        id: &apos;.&apos;,</span><br><span class="line">        exports: &#123;&#125;,</span><br><span class="line">        parent: null,</span><br><span class="line">        filename: &apos;/Users/liyingqi/Desktop/demo/demo2/index.js&apos;,</span><br><span class="line">        loaded: false,</span><br><span class="line">        children: [Array],</span><br><span class="line">        paths: [Array] &#125;,</span><br><span class="line">     &apos;/Users/liyingqi/Desktop/demo/demo2/index2.js&apos;:</span><br><span class="line">      Module &#123;</span><br><span class="line">        id: &apos;/Users/liyingqi/Desktop/demo/demo2/index2.js&apos;, // 模块id</span><br><span class="line">        exports: [Object],</span><br><span class="line">        parent: [Object],</span><br><span class="line">        filename: &apos;/Users/liyingqi/Desktop/demo/demo2/index2.js&apos;,</span><br><span class="line">        loaded: true,</span><br><span class="line">        children: [],</span><br><span class="line">        paths: [Array] &#125; </span><br><span class="line">      &#125; </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<p>想要多次执行某个模块的话：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">// 删除指定模块的缓存</span><br><span class="line">delete require.cache[moduleName];</span><br><span class="line">// 删除所有模块的缓存</span><br><span class="line">Object.keys(require.cache).forEach(function(key) &#123;    </span><br><span class="line">  delete require.cache[key];</span><br><span class="line"></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>循环引用问题：</p>
+<h3 id="AMD-规范"><a href="#AMD-规范" class="headerlink" title="AMD 规范"></a>AMD 规范</h3>
       
     </div>
 
@@ -728,7 +742,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">19</span>
+                    <span class="site-state-item-count">22</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -743,7 +757,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">1</span>
+                      
+                    
+                    <span class="site-state-item-count">2</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -782,7 +798,13 @@
                     
                       
                     
-                    <span class="site-state-item-count">13</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">16</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -847,7 +869,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前端模块化"><span class="nav-number">1.</span> <span class="nav-text">前端模块化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是前端模块化？"><span class="nav-number">1.1.</span> <span class="nav-text">什么是前端模块化？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模块化的优点"><span class="nav-number">1.2.</span> <span class="nav-text">模块化的优点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#早期前端模块化"><span class="nav-number">1.3.</span> <span class="nav-text">早期前端模块化</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#命名空间模式"><span class="nav-number">1.3.1.</span> <span class="nav-text">命名空间模式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#通用命名空间"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">通用命名空间</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#声明依赖关系"><span class="nav-number">1.3.2.</span> <span class="nav-text">声明依赖关系</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#私有属性和方法"><span class="nav-number">1.3.3.</span> <span class="nav-text">私有属性和方法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模块模式"><span class="nav-number">1.4.</span> <span class="nav-text">模块模式</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前端模块化"><span class="nav-number">1.</span> <span class="nav-text">前端模块化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是前端模块化？"><span class="nav-number">1.1.</span> <span class="nav-text">什么是前端模块化？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模块化的优点"><span class="nav-number">1.2.</span> <span class="nav-text">模块化的优点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#早期前端模块化"><span class="nav-number">1.3.</span> <span class="nav-text">早期前端模块化</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#命名空间模式"><span class="nav-number">1.3.1.</span> <span class="nav-text">命名空间模式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#通用命名空间"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">通用命名空间</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#声明依赖关系"><span class="nav-number">1.3.2.</span> <span class="nav-text">声明依赖关系</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#私有属性和方法"><span class="nav-number">1.3.3.</span> <span class="nav-text">私有属性和方法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模块模式"><span class="nav-number">1.4.</span> <span class="nav-text">模块模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#从CommonJS到ES6"><span class="nav-number">1.5.</span> <span class="nav-text">从CommonJS到ES6</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#CommonJS-规范"><span class="nav-number">1.5.1.</span> <span class="nav-text">CommonJS 规范</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#module"><span class="nav-number">1.5.1.1.</span> <span class="nav-text">module</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#require命令"><span class="nav-number">1.5.1.2.</span> <span class="nav-text">require命令</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AMD-规范"><span class="nav-number">1.6.</span> <span class="nav-text">AMD 规范</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -887,7 +909,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">62k</span>
+    <span title="站点总字数">81k</span>
   
 
   
@@ -896,7 +918,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">56 分钟</span>
+    <span title="站点阅读时长">1:13</span>
   
 </div>
 
@@ -1490,7 +1512,7 @@
 <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
 <!-- require MetingJS -->
 <script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
-<div class="music-wrap">
+<div class="music-wrap" style="width: 445px;">
   
   <style>
     .copy-btn {

@@ -1,0 +1,1618 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2"/>
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.0"/>
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.0.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.0.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.0.0',
+    sidebar: {"position":"left","width":300,"display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false,"dimmer":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "381cd60a"
+    });
+  daovoice('update');
+  </script>
+
+
+  <meta name="description" content="px(css pixels)什么是pxpx虚拟像素, 游览器内的一切长度是以css像素为单位的；CSS像素的单位是px 注意（1）在css规范中，长度单位分为两类，相对单位（relative）和绝对单位（absolute）,px是一个相对单位，相对的是设备像素（device pixel）（2）在同一个设备中，每一个css像素所代表的物理像素是可变的（css像素第一方面的相对性）（3）在不同设备之间">
+<meta name="keywords" content="px 物理像素 逻辑像素 设备像素比 ppi viewport">
+<meta property="og:type" content="article">
+<meta property="og:title" content="css像素问题">
+<meta property="og:url" content="https://liyingqi1.com/2019/03/10/css像素问题/index.html">
+<meta property="og:site_name" content="行酒令">
+<meta property="og:description" content="px(css pixels)什么是pxpx虚拟像素, 游览器内的一切长度是以css像素为单位的；CSS像素的单位是px 注意（1）在css规范中，长度单位分为两类，相对单位（relative）和绝对单位（absolute）,px是一个相对单位，相对的是设备像素（device pixel）（2）在同一个设备中，每一个css像素所代表的物理像素是可变的（css像素第一方面的相对性）（3）在不同设备之间">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://liyingqi1.com/2019/03/10/css像素问题/px1.gif">
+<meta property="og:image" content="https://liyingqi1.com/2019/03/10/css像素问题/px2.gif">
+<meta property="og:image" content="https://liyingqi1.com/2019/03/10/css像素问题/shebei.png">
+<meta property="og:image" content="https://liyingqi1.com/2019/03/10/css像素问题/ipone6.png">
+<meta property="og:image" content="https://liyingqi1.com/2019/03/10/css像素问题/commuted.jpeg">
+<meta property="og:image" content="https://liyingqi1.com/2019/03/10/css像素问题/ppi.jpeg">
+<meta property="og:image" content="https://liyingqi1.com/2019/03/10/css像素问题/retina-keywords.png">
+<meta property="og:image" content="https://liyingqi1.com/2019/03/10/css像素问题/retina-chicun.png">
+<meta property="og:image" content="https://liyingqi1.com/2019/03/10/css像素问题/retina-pixel.jpg">
+<meta property="og:image" content="https://liyingqi1.com/2019/03/10/css像素问题/retina-dpr.png">
+<meta property="og:image" content="https://liyingqi1.com/2019/03/10/css像素问题/duibi.jpeg">
+<meta property="og:image" content="https://liyingqi1.com/2019/03/10/css像素问题/retina-bitmap.png">
+<meta property="og:image" content="https://liyingqi1.com/2019/03/10/css像素问题/retina-bitmap-pixels.png">
+<meta property="og:image" content="https://liyingqi1.com/2019/03/10/css像素问题/retina-bitmap-2x.png">
+<meta property="og:updated_time" content="2019-03-10T06:58:04.212Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="css像素问题">
+<meta name="twitter:description" content="px(css pixels)什么是pxpx虚拟像素, 游览器内的一切长度是以css像素为单位的；CSS像素的单位是px 注意（1）在css规范中，长度单位分为两类，相对单位（relative）和绝对单位（absolute）,px是一个相对单位，相对的是设备像素（device pixel）（2）在同一个设备中，每一个css像素所代表的物理像素是可变的（css像素第一方面的相对性）（3）在不同设备之间">
+<meta name="twitter:image" content="https://liyingqi1.com/2019/03/10/css像素问题/px1.gif">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="行酒令" type="application/atom+xml"/>
+
+
+
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>css像素问题 | 行酒令</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">行酒令</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">十步杀一人，千里不留行</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br/>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br/>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br/>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br/>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br/>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-schedule">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/schedule/" rel="section"><i class="menu-item-icon fa fa-fw fa-calendar"></i> <br/>日程表</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br/>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+  
+  
+  
+  
+
+  
+
+  <a href="https://github.com/lyqbetter" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" style="fill: #222; color: #fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+    <div class="reading-progress-bar"></div>
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://liyingqi1.com/2019/03/10/css像素问题/"/>
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="李英奇"/>
+      <meta itemprop="description" content="李英奇的博客"/>
+      <meta itemprop="image" content="/images/avater.jpg"/>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="行酒令"/>
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">css像素问题
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-03-10 09:27:06 / 修改时间：14:58:04" itemprop="dateCreated datePublished" datetime="2019-03-10T09:27:06+08:00">2019-03-10</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/移动端/" itemprop="url" rel="index"><span itemprop="name">移动端</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/03/10/css像素问题/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/03/10/css像素问题/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">4.9k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">4 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="px-css-pixels"><a href="#px-css-pixels" class="headerlink" title="px(css pixels)"></a>px(css pixels)</h2><h3 id="什么是px"><a href="#什么是px" class="headerlink" title="什么是px"></a>什么是px</h3><p>px虚拟像素, 游览器内的一切长度是以css像素为单位的；CSS像素的单位是px</p>
+<h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><p>（1）在css规范中，长度单位分为两类，相对单位（relative）和绝对单位（absolute）,px是一个相对单位，相对的是设备像素（device pixel）<br>（2）在同一个设备中，每一个css像素所代表的物理像素是可变的（css像素第一方面的相对性）<br>（3）在不同设备之间，每一个css像素所代表的物理像素也是可变的（css像素第二方面的相对性）</p>
+<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><p>作为Web开发者，我们接触的更多的是用于控制元素样式的样式单位像素。这里的像素我们称之为CSS像素；<br>假设我们用pc游览器打开一个宽为800的页面，页面上有一个宽度为400px的块级容器，很明显这个块级容器应该占页面的一半，我们把页面放大，放大为200%；你会发现，这个块级容器占满整个游览器，吊诡的是此时我们既没有调整浏览器窗口大小，也没有改变块状元素的css宽度，但是它看上去却变大了一倍——这是因为我们把CSS像素放大为了原来的两倍；<br>CSS像素与屏幕像素1：1同样大小时：</p>
+<p><img src="/2019/03/10/css像素问题/px1.gif" alt="Image text"></p>
+<p>CSS像素(黑色边框)开始被拉伸，此时1个CSS像素大于1个屏幕像素</p>
+<p><img src="/2019/03/10/css像素问题/px2.gif" alt="Image text"><br>也就是说默认情况下一个CSS像素应该是等于一个物理像素的宽度的，但是浏览器的放大操作让一个CSS像素等于了2个设备像素宽度。在后面你会看到更复杂的情况，在高PPI的设备上，CSS像素甚至在默认状态下就相当于多个物理像素的尺寸。从上面的例子可以看出，CSS像素从来都只是一个相对值。</p>
+<h2 id="DP-device-pixels-设备像素"><a href="#DP-device-pixels-设备像素" class="headerlink" title="DP(device pixels)设备像素"></a>DP(device pixels)设备像素</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>设备像素（物理像素），顾名思义，显示屏是由一个个物理像素点组成的，通过控制每个像素点的颜色，使屏幕显示出不同的图像，屏幕从工厂出来那天起，它上面的物理像素点就固定不变了，单位pt。</p>
+<h3 id="注意-1"><a href="#注意-1" class="headerlink" title="注意"></a>注意</h3><p>pt在css单位中属于真正的绝对单位，1pt = 1/72(inch),inch及英寸，而1英寸等于2.54厘米。</p>
+<p>不同的设备，其图像基本单位是不同的，比如显示器的点距，可以认为是显示器的物理像素。现在的液晶显示器的点距一般在0.25mm到0.29mm之间。而打印机的墨点，也可以认为是打印机的物理像素，300DPI就是0.085mm，600DPI就是0.042mm。</p>
+<p>注意，我们通常所说的显示器分辨率，其实是指桌面设定的分辨率，而不是显示器的物理分辨率。只不过现在液晶显示器成为主流，由于液晶的显示原理与CRT不同，只有在桌面分辨率与物理分辨率一致的情况下，显示效果最佳，所以现在我们的桌面分辨率几乎总是与显示器的物理分辨率一致了。</p>
+<h2 id="DPR-device-pixels-ratio-设备像素比"><a href="#DPR-device-pixels-ratio-设备像素比" class="headerlink" title="DPR(device pixels ratio)设备像素比"></a>DPR(device pixels ratio)设备像素比</h2><h3 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h3><p>设备像素比（dpr 描述的是未缩放状态下，物理像素和CSS像素的初始比例关系，计算方法如下图</p>
+<h3 id="理解"><a href="#理解" class="headerlink" title="理解"></a>理解</h3><p>设备像素比(dpr) 是指在移动开发中1个css像素占用多少设备像素，如2代表1个css像素用2x2个设备像素来绘制。<br>设备像素比(dpr)，可以理解为1px由多少个设备像素组成；<br><img src="/2019/03/10/css像素问题/shebei.png" alt="Image text"></p>
+<h3 id="设备像素与css像素之间的关系"><a href="#设备像素与css像素之间的关系" class="headerlink" title="设备像素与css像素之间的关系"></a>设备像素与css像素之间的关系</h3><p>获得设备像素比DPR（device pixels ratio）后，便可得知设备像素与CSS像素之间的比例。当这个比率为1:1时，使用1个设备像素显示1个CSS像素。当这个比率为2:1时，使用4个设备像素显示1个CSS像素，当这个比率为3:1时，使用9（3*3）个设备像素显示1个CSS像素。</p>
+<h2 id="DIP-Device-independent-Pixel-设备独立像素"><a href="#DIP-Device-independent-Pixel-设备独立像素" class="headerlink" title="DIP(Device independent Pixel)设备独立像素"></a>DIP(Device independent Pixel)设备独立像素</h2><p>设备独立像素，也称为逻辑像素，简称dip。<br>根据上述设备像素与CSS像素之间的关系、及DPR的官方定义，我们可以推断出：<br>CSS像素 =设备独立像素 = 逻辑像素<br>在移动端浏览器中以及某些桌面浏览器中，window对象有一个devicePixelRatio属性，它的官方的定义为：设备物理像素和设备独立像素的比例，也就是 devicePixelRatio = 物理像素 / 独立像素。CSS像素就可以看做是设备的独立像素，所以通过devicePixelRatio，我们可以知道该设备上一个css像素代表多少个物理像素。例如，在Retina屏的iphone上，devicePixelRatio的值为2，也就是说1个css像素相当于2 个物理像素;<br>为什么是“每四个一组”？而且要让这四个一组来显示“原来屏幕的一个像素”？这大概就是 Retina 显示技术的一种表现吧。而这“每四个一组”的“大像素”，可以被称作“设备独立像素”，device independent pixel ，或者 density-independentpixel ，它可以是系统中的一个点，这个点代表一个可以由程序使用的虚拟像素，然后由相关系统转换为物理像素。</p>
+<p>“设备独立像素”也有人称为“CSS像素”，一种形象的说法，更倾向于表明与 CSS 中尺寸的对应;</p>
+<h2 id="PPI-pixels-per-inch"><a href="#PPI-pixels-per-inch" class="headerlink" title="PPI(pixels per inch)"></a>PPI(pixels per inch)</h2><h3 id="定义-2"><a href="#定义-2" class="headerlink" title="定义"></a>定义</h3><p>每英寸像素取值，更确切的说法应该是像素密度，也就是衡量单位物理面积内拥有像素值的情况。</p>
+<h3 id="ppi是如何计算出来的呢？"><a href="#ppi是如何计算出来的呢？" class="headerlink" title="ppi是如何计算出来的呢？"></a>ppi是如何计算出来的呢？</h3><p>顾名思义，每英寸的像素点（设备像素），已知屏幕分辨率和主对角线的尺寸，则ppi等于<br>以爱疯6为例<br><img src="/2019/03/10/css像素问题/ipone6.png" alt="Image text"><br><img src="/2019/03/10/css像素问题/commuted.jpeg" alt="Image text"><br>我们知道，ppi越高，每英寸像素点越多，图像越清晰；我们可以类比物体的密度，密度越大，单位体积的质量就越大，ppi越高，单位面积的像素越多。</p>
+<h3 id="ppi和dpr到底什么关系？"><a href="#ppi和dpr到底什么关系？" class="headerlink" title="ppi和dpr到底什么关系？"></a>ppi和dpr到底什么关系？</h3><p>毕竟这些参数是外国人先发明的，他们会优先选择自己熟悉的计量单位作为显示设备的工厂标准参数，因此ppi就用作显示设备的工业标准；<br>告诉业界人士，ppi达到多少是高清屏，此时对应的dpr是多少，而不直接告诉你我现在的显示设备dpr是多少，毕竟人们直接听到像素分辨率会更加有反应。<br>设备像素比与ppi相关，一般是ppi/160的整数倍：<br><img src="/2019/03/10/css像素问题/ppi.jpeg" alt="Image text"></p>
+<h2 id="倍率与逻辑像素"><a href="#倍率与逻辑像素" class="headerlink" title="倍率与逻辑像素"></a>倍率与逻辑像素</h2><h3 id="Retina显示屏"><a href="#Retina显示屏" class="headerlink" title="Retina显示屏"></a>Retina显示屏</h3><p>这是一种显示技术，可以将把更多的像素点压缩至一块屏幕里，从而达到更高的分辨率并提高屏幕显示的细腻程度，这种分辨率在正常观看距离下足以使人肉眼无法分辨其中的单独像素。<br>两代iPhone 的物理尺寸（屏幕宽高有多少英寸）是一样的，从上图可以看出，iphone 4的显示效果要明显好于iphone 3GS，虽然 iPhone 4 分辨率提高了，但它不同于普通的电脑显示器那样为了显示更多的内容，而是提升显示相同内容时的画面精细程度。这种提升方式是靠提升单位面积屏幕的像素数量，即像素密度来提升分辨率，这样做的主要目的是为了提高屏幕显示画面的精细程度。以第三代 MacBook Pro with Retina Display为例， 工作时显卡渲染出的2880x1880个像素每四个一组，输出原来屏幕的一个像素显示的大小区域内的图像。这样一来，用户所看到的图标与文字的大小与原来的1440x900分辨率显示屏相同，但精细度是原来的4倍。</p>
+<p>注意：在桌面显示器中，我们调整了显示分辨率，比如从 800 <em> 600 调整到 1024 </em> 768 时，屏幕的文字图标会变小，显示的内容更多了。但 Retina 显示方式不会产生这样的问题，或者说， Retina 显示技术解决的是显示画面精细程度的问题，而不是解决显示内容容量的问题。苹果以普通屏为基准，给Retina屏定义了一个2倍的倍率（iPhone 6plus除外，它达到了3倍）。实际像素除以倍率，就得到逻辑像素尺寸。只要两个屏幕逻辑像素相同，它们的显示效果就是相同的。<br><img src="/2019/03/10/css像素问题/retina-keywords.png" alt="Image text"><br>我们以 7 plus 为例抽取如下几个关键词（这些关键词跟我们今天要说的内容都息息相关）：<br>  Retina HD 显示屏<br>  5.5 英寸<br>  1920 x 1080 像素分辨率<br>  401 ppi</p>
+<h4 id="5-5英寸"><a href="#5-5英寸" class="headerlink" title="5.5英寸"></a>5.5英寸</h4><p>这个比较简单，就是显示屏对角线的长度（我们可以通过勾股定理计算得到，甚至可以自己用尺子去量）。如下几种不同的 iPhone 的几种尺寸规格<br><img src="/2019/03/10/css像素问题/retina-chicun.png" alt="Image text"></p>
+<p>注：1英寸（inch）=2.54厘米（cm）<br>1920 x 1080 像素分辨率表示该显示屏的分辨率为：1920px x 1080px。</p>
+<p>前面我们已经说过，显示屏上的每个图形都是由一个一个像素点构成的，下面的图形可以很形象的帮助你明白；<br><img src="/2019/03/10/css像素问题/retina-pixel.jpg" alt="Image text"><br>既然明白了像素点，现在我们就可以解释分辨率1920px x 1080px的意思了。它表示在这个iPhone 7 plus 5.5 英寸英寸屏幕上，在竖向的高度上有1920个像素点，在横向的宽度上有1080个像素点。<br>我们把分辨率的像素称之为物理像素或设备像素（如 iPhone 7 的物理像素为 750px <em> 1334px），它是显示设备中一个最微小的物理部件。<br>设备独立像素：CSS 的尺寸像素称之为设备独立像素（device-independent pixels 简称为“DIPs”）或 CSS 像素（如 iPhone 7 的设备独立像素为 375px </em> 667px），它是一个抽象的单位，主要使用在浏览器上，用来精确的度量（确定）Web页面上的内容。<br>devicePixelRatio（简写 DPR）： 用来描述物理像素与设备独立像素的比例，其值等于 “物理像素 / 设备独立像素”。devicePixelRatio 值为 1 时就是我们的标准屏，值为 2 时则是我们俗称的 2 倍屏（2x），同样 3 就是 3 倍屏（3x）<br>通过上面的说明，我们可以得到 iPhone 7 的 devicePixelRatio 为 2 （750px / 375px = 2），就是 2 倍屏。那么这个 2 倍屏跟我们普通的标准屏有什么区别呢？<br>对一个标准屏来说，渲染一个 2px 2px 的盒子将会使用 2px 2px 物理像素，如我们的普通电脑屏；但是对于一个 2 倍屏来说，渲染一个 2px 2px 的盒子将会使用 （2px 2） （2px 2） 物理像素，如我们的 iPhone 4、5、6、7，如下图：<br><img src="/2019/03/10/css像素问题/retina-dpr.png" alt="Image text"></p>
+<h3 id="基本关系"><a href="#基本关系" class="headerlink" title="基本关系"></a>基本关系</h3><p>用iPhone 3gs和4s来举例。假设有个邮件列表界面，我们不妨按照PC端网页设计的思维来想象。3gs上大概只能显示4-5行，4s就能显示9-10行，而且每行会变得特别宽。但两款手机其实是一样大的。如果照这种方式显示，3gs上刚刚好的效果，在4s上就会小到根本看不清字。<br><img src="/2019/03/10/css像素问题/duibi.jpeg" alt="Image text"><br>在现实中，这两者效果却是一样的。这是因为Retina屏幕把2x2个像素当1个像素使用。比如原本44像素高的顶部导航栏，在Retina屏上用了88个像素的高度来显示。导致界面元素都变成2倍大小，反而和3gs效果一样了。画质却更清晰。</p>
+<h2 id="面临问题"><a href="#面临问题" class="headerlink" title="面临问题"></a>面临问题</h2><p>熟悉了这些概念之后，我们就要开始解决需要面临的问题了。由于 devicePixelRatio 不再是1，我们的物理像素与设备独立像素不再对等，所以在实际网页开发时面临了2个问题：图片虚化、1px边框变粗</p>
+<h3 id="图片虚化"><a href="#图片虚化" class="headerlink" title="图片虚化"></a>图片虚化</h3><p>我们知道，位图（png, jpg, gif等）是由一个个像素点构成的，每个像素都具有特定的位置和颜色值，我们称之为位图像素，如下图：<br><img src="/2019/03/10/css像素问题/retina-bitmap.png" alt="Image text"><br>当一个位图在标准屏显示时，一位图像素对应的就是一物理像素，这样就保证了一个完全保真的显示。但是当在 2 倍屏下时，它需要要放大四倍（宽高各两倍）来保持相同的物理像素的大小，这样就会丢失很多细节，造成失真的情形，也就是我们常说的图片虚化问题。如下图：<br><img src="/2019/03/10/css像素问题/retina-bitmap-pixels.png" alt="Image text"><br>那么怎么解决该问题呢？说到底就是为了让一位图像素对应一物理像素，既然物理像素已经定了不能变，那么我们是否可以改变位图像素呢？答案是肯定的。<br>我们可以把要使用的图片扩大一倍，如要用的图片大小为 2px 2px，我们可以使用 4px 4px 的图片然后设置图片大小为 2px * 2px，这样对于2倍屏则正好，而标准屏则减少像素取样（一定程度上的浪费），如下图：<br><img src="/2019/03/10/css像素问题/retina-bitmap-2x.png" alt="Image text"><br>这样就解决了我们的图片在2倍屏的虚化问题，对于3倍屏也是一样的道理</p>
+<p>跟多相关知识见：viewport</p>
+<p>参考：<a href="https://www.quirksmode.org/mobilewebhandbook/chapter1.html" target="_blank" rel="noopener">https://www.quirksmode.org/mobilewebhandbook/chapter1.html</a><br>     <a href="https://www.cnblogs.com/zaoa/p/8630393.html" target="_blank" rel="noopener">https://www.cnblogs.com/zaoa/p/8630393.html</a> </p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>觉得文章对您有帮助请我喝杯咖啡吧</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById(&quot;QR&quot;); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpeg" alt="李英奇 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpeg" alt="李英奇 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/px-物理像素-逻辑像素-设备像素比-ppi-viewport/" rel="tag"># px 物理像素 逻辑像素 设备像素比 ppi viewport</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/09/异步加载js文件/" rel="next" title="异步加载js文件">
+                <i class="fa fa-chevron-left"></i> 异步加载js文件
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/03/10/viewport/" rel="prev" title="viewport">
+                viewport <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avater.jpg"
+                alt="李英奇"/>
+            
+              <p class="site-author-name" itemprop="name">李英奇</p>
+              <p class="site-description motion-element" itemprop="description">李英奇的博客</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">22</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">16</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/lqybetter" title="GitHub &rarr; https://github.com/lqybetter" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i></a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                  
+                    
+                  
+                  <a href="mailto:834777203@qq.com" title="E-Mail &rarr; mailto:834777203@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i></a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#px-css-pixels"><span class="nav-number">1.</span> <span class="nav-text">px(css pixels)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是px"><span class="nav-number">1.1.</span> <span class="nav-text">什么是px</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注意"><span class="nav-number">1.2.</span> <span class="nav-text">注意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#例子"><span class="nav-number">1.3.</span> <span class="nav-text">例子</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DP-device-pixels-设备像素"><span class="nav-number">2.</span> <span class="nav-text">DP(device pixels)设备像素</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义"><span class="nav-number">2.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注意-1"><span class="nav-number">2.2.</span> <span class="nav-text">注意</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DPR-device-pixels-ratio-设备像素比"><span class="nav-number">3.</span> <span class="nav-text">DPR(device pixels ratio)设备像素比</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义-1"><span class="nav-number">3.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#理解"><span class="nav-number">3.2.</span> <span class="nav-text">理解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设备像素与css像素之间的关系"><span class="nav-number">3.3.</span> <span class="nav-text">设备像素与css像素之间的关系</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DIP-Device-independent-Pixel-设备独立像素"><span class="nav-number">4.</span> <span class="nav-text">DIP(Device independent Pixel)设备独立像素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PPI-pixels-per-inch"><span class="nav-number">5.</span> <span class="nav-text">PPI(pixels per inch)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义-2"><span class="nav-number">5.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ppi是如何计算出来的呢？"><span class="nav-number">5.2.</span> <span class="nav-text">ppi是如何计算出来的呢？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ppi和dpr到底什么关系？"><span class="nav-number">5.3.</span> <span class="nav-text">ppi和dpr到底什么关系？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#倍率与逻辑像素"><span class="nav-number">6.</span> <span class="nav-text">倍率与逻辑像素</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Retina显示屏"><span class="nav-number">6.1.</span> <span class="nav-text">Retina显示屏</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#5-5英寸"><span class="nav-number">6.1.1.</span> <span class="nav-text">5.5英寸</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基本关系"><span class="nav-number">6.2.</span> <span class="nav-text">基本关系</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#面临问题"><span class="nav-number">7.</span> <span class="nav-text">面临问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#图片虚化"><span class="nav-number">7.1.</span> <span class="nav-text">图片虚化</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 – <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">李英奇</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="站点总字数">81k</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+    <span title="站点阅读时长">1:13</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a></div>
+
+
+
+  <div class="footer-custom">欢迎打赏评论</div>
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/reading_progress/reading_progress.js"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.0"></script>
+
+  <script src="/js/src/motion.js?v=7.0.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/affix.js?v=7.0.0"></script>
+
+  <script src="/js/src/schemes/pisces.js?v=7.0.0"></script>
+
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.0"></script>
+<script src="/js/src/post-details.js?v=7.0.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=7.0.0"></script>
+
+
+  
+  
+  
+
+<script src="//cdn1.lncld.net/static/js/3.11.1/av-min.js"></script>
+
+
+
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+<script>
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: true,
+    notify: false,
+    appId: 'iniTISa2YMNIdqFT99GrBua1-gzGzoHsz',
+    appKey: 'yXIUo5ajDuxW9qX9ixHIKIeI',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+</script>
+
+
+
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('-1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <style>
+    .copy-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 20px;
+      color: #333;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      
+        background-color: #eee;
+        background-image: linear-gradient(#fcfcfc, #eee);
+        border: 1px solid #d5d5d5;
+        border-radius: 3px;
+      
+      user-select: none;
+      outline: 0;
+    }
+
+    .highlight-wrap .copy-btn {
+      transition: opacity .3s ease-in-out;
+      opacity: 0;
+      padding: 2px 6px;
+      position: absolute;
+      
+        right: 4px;
+        top: 8px;
+      
+    }
+
+    .highlight-wrap:hover .copy-btn,
+    .highlight-wrap .copy-btn:focus {
+      opacity: 1;
+    }
+
+    .highlight-wrap {
+      position: relative;
+    }
+  </style>
+  <script>
+    $('.highlight').each(function(i, e) {
+      var $wrap = $('<div>').addClass('highlight-wrap');
+      $(e).after($wrap);
+      $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function(e) {
+        var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+          return $(e).text();
+        }).toArray().join('\n');
+        var ta = document.createElement('textarea');
+        var range = document.createRange(); //For Chrome
+        var sel = window.getSelection(); //For Chrome
+        var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+        ta.style.top = yPosition + 'px'; //Prevent page scroll
+        ta.style.position = 'absolute';
+        ta.style.opacity = '0';
+        ta.value = code;
+        ta.textContent = code; //For FireFox
+        ta.contentEditable = true;
+        ta.readOnly = false;
+        document.body.appendChild(ta);
+        range.selectNode(ta);
+        sel.removeAllRanges();
+        sel.addRange(range);
+        ta.setSelectionRange(0, code.length);
+        var result = document.execCommand('copy');
+        
+          if (result) $(this).text('复制成功');
+          else $(this).text('复制失败');
+        
+        ta.blur(); //For iOS
+        $(this).blur();
+      })).on('mouseleave', function(e) {
+        var $b = $(this).find('.copy-btn');
+        setTimeout(function() {
+          $b.text('复制');
+        }, 300);
+      }).append(e);
+    })
+  </script>
+
+
+  <!-- require APlayer -->
+<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<!-- require MetingJS -->
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+<div class="music-wrap" style="width: 445px;">
+  
+  <style>
+    .copy-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 20px;
+      color: #333;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      
+        background-color: #eee;
+        background-image: linear-gradient(#fcfcfc, #eee);
+        border: 1px solid #d5d5d5;
+        border-radius: 3px;
+      
+      user-select: none;
+      outline: 0;
+    }
+
+    .highlight-wrap .copy-btn {
+      transition: opacity .3s ease-in-out;
+      opacity: 0;
+      padding: 2px 6px;
+      position: absolute;
+      
+        right: 4px;
+        top: 8px;
+      
+    }
+
+    .highlight-wrap:hover .copy-btn,
+    .highlight-wrap .copy-btn:focus {
+      opacity: 1;
+    }
+
+    .highlight-wrap {
+      position: relative;
+    }
+  </style>
+  <script>
+    $('.highlight').each(function(i, e) {
+      var $wrap = $('<div>').addClass('highlight-wrap');
+      $(e).after($wrap);
+      $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function(e) {
+        var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+          return $(e).text();
+        }).toArray().join('\n');
+        var ta = document.createElement('textarea');
+        var range = document.createRange(); //For Chrome
+        var sel = window.getSelection(); //For Chrome
+        var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+        ta.style.top = yPosition + 'px'; //Prevent page scroll
+        ta.style.position = 'absolute';
+        ta.style.opacity = '0';
+        ta.value = code;
+        ta.textContent = code; //For FireFox
+        ta.contentEditable = true;
+        ta.readOnly = false;
+        document.body.appendChild(ta);
+        range.selectNode(ta);
+        sel.removeAllRanges();
+        sel.addRange(range);
+        ta.setSelectionRange(0, code.length);
+        var result = document.execCommand('copy');
+        
+          if (result) $(this).text('复制成功');
+          else $(this).text('复制失败');
+        
+        ta.blur(); //For iOS
+        $(this).blur();
+      })).on('mouseleave', function(e) {
+        var $b = $(this).find('.copy-btn');
+        setTimeout(function() {
+          $b.text('复制');
+        }, 300);
+      }).append(e);
+    })
+  </script>
+
+
+  <meting-js
+  server="netease"
+  list-folded="true"
+  type="playlist"
+  id="865296665"
+  >
+  </meting-js>
+</div>
+ 
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"log":false});</script></body>
+</html>
