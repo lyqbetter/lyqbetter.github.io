@@ -106,15 +106,18 @@
   </script>
 
 
-  <meta name="keywords" content="来了老弟">
+  <meta name="description" content="背景介绍统的项目开发中，我们只会用到px、%、em这几个单位，它可以适用于大部分的项目开发，并且拥有比较良好的兼容性。但是你知道吗？从css3开始，浏览器对逻辑单位的支持又提升到了另外一个境界，增加了rem、vh、vw、vm等一些新的长度单位，我们可以利用这些新的单位开发出比较良好的响应式页面，随之覆盖多种不同分辨率的终端，包括移动设备等。现在让我们来看下这些长度单位有什么区别。 知识剖析pxpx">
+<meta name="keywords" content="rem vw vh vm em px">
 <meta property="og:type" content="article">
-<meta property="og:title" content="原型链">
-<meta property="og:url" content="https://liyingqi1.com/2019/02/26/原型链/index.html">
+<meta property="og:title" content="css3单位">
+<meta property="og:url" content="https://liyingqi1.com/2019/03/10/css3单位/index.html">
 <meta property="og:site_name" content="行酒令">
+<meta property="og:description" content="背景介绍统的项目开发中，我们只会用到px、%、em这几个单位，它可以适用于大部分的项目开发，并且拥有比较良好的兼容性。但是你知道吗？从css3开始，浏览器对逻辑单位的支持又提升到了另外一个境界，增加了rem、vh、vw、vm等一些新的长度单位，我们可以利用这些新的单位开发出比较良好的响应式页面，随之覆盖多种不同分辨率的终端，包括移动设备等。现在让我们来看下这些长度单位有什么区别。 知识剖析pxpx">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-02-26T09:47:43.725Z">
+<meta property="og:updated_time" content="2019-03-10T08:09:25.553Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="原型链">
+<meta name="twitter:title" content="css3单位">
+<meta name="twitter:description" content="背景介绍统的项目开发中，我们只会用到px、%、em这几个单位，它可以适用于大部分的项目开发，并且拥有比较良好的兼容性。但是你知道吗？从css3开始，浏览器对逻辑单位的支持又提升到了另外一个境界，增加了rem、vh、vw、vm等一些新的长度单位，我们可以利用这些新的单位开发出比较良好的响应式页面，随之覆盖多种不同分辨率的终端，包括移动设备等。现在让我们来看下这些长度单位有什么区别。 知识剖析pxpx">
 
 
 
@@ -131,7 +134,7 @@
   };
 </script>
 
-  <title>原型链 | 行酒令</title>
+  <title>css3单位 | 行酒令</title>
   
 
 
@@ -410,7 +413,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://liyingqi1.com/2019/02/26/原型链/"/>
+    <link itemprop="mainEntityOfPage" href="https://liyingqi1.com/2019/03/10/css3单位/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="李英奇"/>
@@ -427,7 +430,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">原型链
+          <h1 class="post-title" itemprop="name headline">css3单位
 
               
             
@@ -453,12 +456,34 @@
                 
               
 
-              <time title="创建时间：2019-02-26 17:47:43" itemprop="dateCreated datePublished" datetime="2019-02-26T17:47:43+08:00">2019-02-26</time>
+              <time title="创建时间：2019-03-10 15:11:08 / 修改时间：16:09:25" itemprop="dateCreated datePublished" datetime="2019-03-10T15:11:08+08:00">2019-03-10</time>
             
 
+            
+              
+
+              
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/移动端/" itemprop="url" rel="index"><span itemprop="name">移动端</span></a></span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -472,8 +497,8 @@
                 </span>
             
                 <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/02/26/原型链/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/02/26/原型链/" itemprop="commentCount"></span>
+                <a href="/2019/03/10/css3单位/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/03/10/css3单位/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -495,7 +520,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">0</span>
+                <span title="本文字数">1.1k</span>
               
 
               
@@ -529,7 +554,16 @@
       
 
       
-        
+        <h2 id="背景介绍"><a href="#背景介绍" class="headerlink" title="背景介绍"></a>背景介绍</h2><p>统的项目开发中，我们只会用到px、%、em这几个单位，它可以适用于大部分的项目开发，并且拥有比较良好的兼容性。但是你知道吗？从css3开始，浏览器对逻辑单位的支持又提升到了另外一个境界，增加了rem、vh、vw、vm等一些新的长度单位，我们可以利用这些新的单位开发出比较良好的响应式页面，随之覆盖多种不同分辨率的终端，包括移动设备等。现在让我们来看下这些长度单位有什么区别。</p>
+<h3 id="知识剖析"><a href="#知识剖析" class="headerlink" title="知识剖析"></a>知识剖析</h3><h4 id="px"><a href="#px" class="headerlink" title="px"></a>px</h4><p>px就是pixel的缩写，意为像素。px就是一张图片最小的一个点，一张位图就是千千万万的这样的点构成的，比如常常听到的电脑像素是1024x768的，表示的是水平方向是1024个像素点，垂直方向是768个像素点（设备像素），css中的像素px是一个相对单位，要考虑它的上下文；</p>
+<h4 id="em"><a href="#em" class="headerlink" title="em"></a>em</h4><p>参考物是父元素的font-size，具有继承的特点。如果自身定义了font-size按自身来计算（浏览器默认字体是16px），整个页面内1em不是一个固定的值。</p>
+<h4 id="rem"><a href="#rem" class="headerlink" title="rem"></a>rem</h4><p>css3新单位，相对于根元素html（网页）的font-size，不会像em那样，依赖于父元素的字体大小，而造成混乱</p>
+<h4 id=""><a href="#" class="headerlink" title="%"></a>%</h4><p>一般宽泛的讲是相对于父元素，但是并不是十分准确。<br>(1) 对于普通定位元素就是我们理解的父元素<br>(2) 对于position: absolute;的元素是相对于已定位的父元素<br>(3) 对于position: fixed;的元素是相对于 ViewPort（可视窗口）<br>(4) 子元素padding-top || padding-bottom 设置%，相对于父级的宽度进行定位</p>
+<h4 id="vw"><a href="#vw" class="headerlink" title="vw"></a>vw</h4><p>css3新单位，viewpoint width的缩写，视窗宽度，1vw等于视窗宽度的1%<br>举个例子：浏览器宽度1200px, 1 vw = 1200px/100 = 12 px。</p>
+<h4 id="vh"><a href="#vh" class="headerlink" title="vh"></a>vh</h4><p>css3新单位，viewpoint height的缩写，视窗高度，1vh等于视窗高度的1%<br>举个例子：浏览器高度900px, 1 vh = 900px/100 = 9 px。</p>
+<h4 id="vm"><a href="#vm" class="headerlink" title="vm"></a>vm</h4><p>css3新单位，相对于视口的宽度或高度中较小的那个。其中最小的那个被均分为100单位的vm<br>高度小，将高度分为100份，20vm,取20份<br>举个例子：浏览器高度900px，宽度1200px，取最小的浏览器高度， 1 vm = 900px/100 = 9 px。</p>
+<h4 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h4><p>为什么一开始在css样式中给body设置font-size：62.5%？<br>Font-size=62.5%这就使em值变为16px*62.5%=10px。这样1em=10px，1.2em=12px利于我们进行换算。</p>
+
       
     </div>
 
@@ -579,6 +613,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/rem-vw-vh-vm-em-px/" rel="tag"># rem vw vh vm em px</a>
+          
+        </div>
+      
 
       
       
@@ -588,8 +628,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/02/26/游览器结构/" rel="next" title="游览器结构">
-                <i class="fa fa-chevron-left"></i> 游览器结构
+              <a href="/2019/03/10/viewport/" rel="next" title="viewport">
+                <i class="fa fa-chevron-left"></i> viewport
               </a>
             
           </div>
@@ -597,10 +637,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/03/09/异步加载js文件/" rel="prev" title="异步加载js文件">
-                异步加载js文件 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -648,8 +684,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -786,6 +831,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#背景介绍"><span class="nav-number">1.</span> <span class="nav-text">背景介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#知识剖析"><span class="nav-number">1.1.</span> <span class="nav-text">知识剖析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#px"><span class="nav-number">1.1.1.</span> <span class="nav-text">px</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#em"><span class="nav-number">1.1.2.</span> <span class="nav-text">em</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#rem"><span class="nav-number">1.1.3.</span> <span class="nav-text">rem</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#"><span class="nav-number">1.1.4.</span> <span class="nav-text">%</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#vw"><span class="nav-number">1.1.5.</span> <span class="nav-text">vw</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#vh"><span class="nav-number">1.1.6.</span> <span class="nav-text">vh</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#vm"><span class="nav-number">1.1.7.</span> <span class="nav-text">vm</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常见问题"><span class="nav-number">1.1.8.</span> <span class="nav-text">常见问题</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
